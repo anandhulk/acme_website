@@ -55,6 +55,7 @@ nav li a:hover{
 .cart{
     background-color: rgb(34, 34, 34);
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .cart img{
@@ -106,7 +107,7 @@ footer div img{
 .image-description{
     position: absolute;
     left:200px;
-    bottom: 150px;
+    bottom: 140px;
     color: white;
 }
 
@@ -116,6 +117,7 @@ footer div img{
 
 .image-description p {
     line-height: 25px;
+    font-weight: 150;
 }
 
 .container-1{
@@ -145,6 +147,10 @@ footer div img{
     text-align: right;
 }
 
+.banner-description-2 p{
+    font-weight: 150;
+}
+
 .banner-description-2 h1{
     font-size: 250%;
     line-height: 50px;
@@ -152,4 +158,28 @@ footer div img{
 .image-banner-2 img{
     height: 500px;
     width: 100%;
+}
+
+.white-button{
+    padding: 6px 20px 6px 20px;
+    background-color: white;
+    border-radius: 5px;
+    font-weight: 900;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+}
+
+.transparent-button{
+    background-color: transparent;
+    background-repeat: none;
+    border: 1px solid white;
+    overflow: hidden;
+    cursor: pointer;
+    color: white;
+    padding: 6px 20px 6px 20px;
+    margin-top: 10px;
+    font-weight: 900;
+    border-radius: 5px;
+    
 }
