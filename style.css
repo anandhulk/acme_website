@@ -56,12 +56,24 @@ nav li a:hover{
     background-color: rgb(34, 34, 34);
     border-radius: 5px;
     cursor: pointer;
+    padding: 4px 10px 4px 10px;
+    border: none;
+    position: relative;
 }
 
 .cart img{
     width: 25px;
     height:20px;
 
+}
+
+.cart-count{
+    background-color: white;
+    border-radius: 15px;
+    padding: 0 4px 0 4px;
+    position: absolute;
+    top:-5px;
+    right:-5px;
 }
 
 nav li{
