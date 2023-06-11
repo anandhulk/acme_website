@@ -258,7 +258,7 @@ footer div img{
 .sale-tag{
     position: absolute;
     right: 20px;
-    bottom: 410px;
+    bottom: 390px;
     background-color: rgb(243, 48, 84);
     color: white;
     padding: 3px 15px 3px 15px;
@@ -298,3 +298,61 @@ footer div img{
     cursor: pointer;
     font-weight: 600;
 }
+
+.view-all{
+    background-color: white;
+    padding: 20px 0 20px 0;
+    text-align: center;
+}
+
+.view-all button{
+    background-color: rgb(34, 34, 34);
+    border: none;
+    padding: 10px 25px 10px 25px;
+    font-weight: 600;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.container-3{
+    width:80%;
+    height: 700px;
+    margin-left: 10%;
+    padding-top: 20px;
+    position: relative;
+}
+
+.text-block{
+    background-color: rgb(34, 34, 34);
+    width:85%;
+    height:80%;
+    margin-left: 15%;
+    padding-top: 70px;
+    padding-left: 450px;
+    color:white;
+}
+
+.text-block h1{
+    font-weight: 600;
+    padding-bottom: 20px;
+    font-size: 220%;
+}
+
+.text-block p{
+    line-height: 20px;
+    font-weight: 400;
+    font-size: 90%;
+    padding-top: 10px;
+}
+
+.container-3 img{
+    width:380px;
+    height:420px;
+    object-fit: cover;
+    object-position: 100% 0;
+    position: absolute;
+    top:80px;
+}
+
+
