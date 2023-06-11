@@ -331,6 +331,7 @@ footer div img{
     width:80%;
     height: 700px;
     margin-left: 10%;
+    margin-top: 80px;
     padding-top: 20px;
     position: relative;
 }
@@ -367,4 +368,8 @@ footer div img{
     top:80px;
 }
 
-
+.triangle-svg{
+    width:303px;
+    margin-left: -30px;
+    margin-top: 10px;
+}
