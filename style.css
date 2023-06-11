@@ -344,6 +344,7 @@ footer div img{
     padding-top: 70px;
     padding-left: 450px;
     color:white;
+    border-radius: 10px;
 }
 
 .text-block h1{
@@ -366,6 +367,7 @@ footer div img{
     object-position: 100% 0;
     position: absolute;
     top:80px;
+    border-radius: 5px;
 }
 
 .triangle-svg{
