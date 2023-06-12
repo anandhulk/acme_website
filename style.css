@@ -210,9 +210,10 @@ footer div img{
 .blackbox{
     background-color: rgb(34, 34, 34);
     overflow: hidden;
-    height:270px;
-    width:270px;
+    height:310px;
+    width:310px;
     padding: 10px;
+    border-radius: 10px;
 }
 
 .container-2 a{
@@ -239,7 +240,7 @@ footer div img{
 .boxes p{
     font-weight: 400;
     font-size: 80%;
-    padding: 30px 65px 30px 0;
+    padding: 30px 80px 30px 0;
     line-height: 20px;
 }
 
@@ -371,7 +372,7 @@ footer div img{
 }
 
 .triangle-svg{
-    width:303px;
+    width:350px;
     margin-left: -30px;
-    margin-top: 10px;
+    margin-top: 30px;
 }
