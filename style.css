@@ -384,3 +384,42 @@ footer div img{
     object-position: 100%;
 }
 
+.about-white-para{
+    height:250px;
+    text-align: center;
+    padding-top: 70px;
+    line-height: 25px;
+}
+
+.first-line{
+    padding-bottom: 20px;
+}
+
+.about-white-para h1{
+    font-weight: 550;
+    padding-bottom: 20px;
+}
+
+.about-white-para p{
+    font-size: 90%;
+}
+
+.about-container-1{
+    display: flex;
+    justify-content: center;
+    padding: 50px 0 50px ;
+    line-height: 25px;
+}
+
+.about-items{
+    width:280px;
+}
+
+.about-container-1 h2{
+    padding: 10px 0 10px;
+    font-size: 140%;
+}
+
+.about-container-1 p{
+    font-size: 90%;
+}
