@@ -89,7 +89,7 @@ nav li{
 
 .head-image{
     width: 100%;
-    height:500px;
+    height:600px;
 }
 
 footer{
@@ -385,6 +385,7 @@ footer div img{
 .head-image-about{
     object-fit: cover;
     object-position: 100%;
+    height: 600px;
 }
 
 .about-white-para{
@@ -435,13 +436,15 @@ footer div img{
 }
 
 .about-container-2 div{
-    padding-left: 300px;
+    padding-left: 350px;
     height: 600px;
 }
 
 .about-container-2 img{
     object-position: 100% -150px;
     height: 620px;
+    width:450px;
+    top: 50px;
 }
 
 .owners{
@@ -462,8 +465,8 @@ footer div img{
 }
 
 .owners img{
-    width:120px;
-    height: 140px;
+    width:180px;
+    height: 200px;
     padding-bottom: 20px;
 }
 
