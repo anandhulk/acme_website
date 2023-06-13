@@ -447,6 +447,10 @@ footer div img{
     top: 50px;
 }
 
+.about-container-2 p{
+    padding-bottom: 7px;
+}
+
 .owners{
     display: flex;
     justify-content: center;
@@ -488,5 +492,9 @@ footer div img{
 .footer-h{
     margin-bottom: 20px;
     font-weight: 550;
+}
+
+.footer-img{
+    height: 500px;
 }
 
