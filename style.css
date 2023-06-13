@@ -391,17 +391,18 @@ footer div img{
     line-height: 25px;
 }
 
+.second-line{
+    font-size: 90%;
+}
+
 .first-line{
     padding-bottom: 20px;
+    font-size: 80%;
 }
 
 .about-white-para h1{
     font-weight: 550;
     padding-bottom: 20px;
-}
-
-.about-white-para p{
-    font-size: 90%;
 }
 
 .about-container-1{
@@ -465,6 +466,21 @@ footer div img{
 
 .owners h2{
     padding-bottom: 10px;
+    font-weight: 550;
+}
+
+.image-overlay-footer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 0), rgb(34, 34, 34));
+    z-index: 0;
+}
+
+.footer-h{
+    margin-bottom: 20px;
     font-weight: 550;
 }
 
