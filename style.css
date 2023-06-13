@@ -413,6 +413,7 @@ footer div img{
 
 .about-items{
     width:280px;
+    padding-right: 40px;
 }
 
 .about-container-1 h2{
@@ -423,3 +424,47 @@ footer div img{
 .about-container-1 p{
     font-size: 90%;
 }
+
+.about-container-2{
+    width: 1080px;
+    margin-left: 160px;
+}
+
+.about-container-2 div{
+    padding-left: 300px;
+    height: 600px;
+}
+
+.about-container-2 img{
+    object-position: 100% -150px;
+    height: 620px;
+}
+
+.owners{
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 50px;
+}
+
+.owners div{
+    width: 500px;
+    padding: 0 130px 0 130px;
+    text-align: center;
+}
+
+.owners p{
+    font-size: 90%;
+    line-height: 20px;
+}
+
+.owners img{
+    width:120px;
+    height: 140px;
+    padding-bottom: 20px;
+}
+
+.owners h2{
+    padding-bottom: 10px;
+    font-weight: 550;
+}
+
