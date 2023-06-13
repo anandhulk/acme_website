@@ -16,8 +16,10 @@
 .btn{
     background-color: rgb(243, 48, 84);
     border-radius: 25px;
-    height: 30px;
     color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px 10px 20px;
 }
 
 .btn p{
@@ -119,7 +121,7 @@ footer div img{
 .image-description{
     position: absolute;
     left:200px;
-    bottom: 140px;
+    bottom: 100px;
     color: white;
     z-index: 1;
 }
@@ -304,7 +306,7 @@ footer div img{
 .products button{
     background-color: rgb(243, 48, 84);
     color: white;
-    padding: 5px 20px 5px 20px;
+    padding: 10px 20px 10px 20px;
     margin-top: 20px;
     border-radius: 5px;
     border: none;
@@ -314,14 +316,14 @@ footer div img{
 
 .view-all{
     background-color: white;
-    padding: 20px 0 20px 0;
+    padding: 30px 0 20px 0;
     text-align: center;
 }
 
 .view-all button{
     background-color: rgb(34, 34, 34);
     border: none;
-    padding: 10px 25px 10px 25px;
+    padding: 15px 25px 15px 25px;
     font-weight: 600;
     color: white;
     border-radius: 5px;
@@ -376,3 +378,9 @@ footer div img{
     margin-left: -30px;
     margin-top: 30px;
 }
+
+.head-image-about{
+    object-fit: cover;
+    object-position: 100%;
+}
+
