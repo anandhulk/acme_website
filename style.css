@@ -516,6 +516,7 @@ footer div img{
     border-radius: 10px;
 }
 
+
 .featured-item{
     position: relative;
 }
@@ -533,6 +534,10 @@ footer div img{
     bottom: 10px;
     left: 230px;
     color: white;
+}
+
+.featured-image{
+    position: relative;
 }
 
 .feature-tag{
@@ -577,6 +582,9 @@ footer div img{
 .input{
     width:40px;
     height:30px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
 }
 
 description h4{
@@ -587,7 +595,7 @@ description h4{
     margin-top: 30px;
 }
 
-.red-button{
+.red-white-button{
     padding: 7px 20px 7px 20px;
     border: 1px solid rgb(243, 48, 84);
     background-color: transparent;
