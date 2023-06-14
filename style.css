@@ -670,7 +670,7 @@ description h4{
     margin-bottom: 20px;
 }
 
-.contact-box button{
+.red-button{
     background-color: rgb(243, 48, 84);
     color: white;
     padding: 10px 20px 10px 20px;
@@ -683,4 +683,52 @@ description h4{
 
 .contact-overlay{
     background: linear-gradient(to left, rgba(10, 10, 10, 0), rgb(34, 34, 34));
+}
+
+.contact-container{
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.contact-us{
+    width:40%;
+    padding: 30px 0 0 170px;
+    line-height: 20px;
+}
+
+.contact-us h2{
+    margin-bottom: 20px;
+}
+
+.contact-container p{
+    font-size: 85%;
+}
+
+.break{
+    margin-top: 30px;
+}
+
+.contact-form{
+    width:60%;
+    padding: 30px 0 0 0;
+}
+
+.contact-form p{
+    margin-top: 20px;
+}
+
+.contact-form input{
+    width:700px;
+    height: 25px;
+    margin-top: 5px;
+    padding-left: 20px;
+    border:1px solid black;
+    border-radius: 5px;
+}
+
+.input-message{
+    padding-top: 10px;
+    padding-bottom: 30px;
 }
