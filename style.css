@@ -553,7 +553,8 @@ footer div img{
 
 .product-container-1 img{
     height: 400px;
-    width:400px;
+    width:450px;
+    border-radius: 10px;
 }
 
 .description{
@@ -594,3 +595,92 @@ description h4{
     border-radius: 5px;
 }
 
+.tweet{
+    border: none;
+    background-color: rgb(18, 144, 255);
+    width: fit-content;
+    height: 25px;
+    padding: 0 2px 2px 2px;
+    margin-top: 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+.tweet img,p{
+    display: inline-block;
+}
+
+.tweet img{
+    width:15px;
+    height: 15px;
+}
+
+.contact-header{
+    width: 100%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+}
+
+.left-header{
+    width: 60%;
+    background-color: rgb(34, 34, 34);
+    color: white;
+}
+
+.contact-image{
+    width: 40%;
+    position: relative;
+}
+
+.contact-image img{
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+.contact-header h1{
+    margin: 50px 0 0 170px;
+}
+
+.contact-white-box{
+    display: flex;
+    justify-content: right;
+
+}
+
+.contact-box{
+    background-color: white;
+    text-align: center;
+    padding: 20px;
+    color: black;
+    width: 320px;
+    margin-left: 50px;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+.contact-box h2{
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.contact-box p{
+    font-size: 80%;
+    margin-bottom: 20px;
+}
+
+.contact-box button{
+    background-color: rgb(243, 48, 84);
+    color: white;
+    padding: 10px 20px 10px 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.contact-overlay{
+    background: linear-gradient(to left, rgba(10, 10, 10, 0), rgb(34, 34, 34));
+}
