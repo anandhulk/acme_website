@@ -5,10 +5,27 @@ const cartExit=document.getElementById("cartExit")
 
 const inputQuant=document.getElementById("input-quantity")
 const cartList=document.getElementById("cartList")
-const bagQuantity=document.getElementById("bag-input")
+const bagQuantity=document.getElementById("greenpack-input")
 const total=document.getElementById("total")
 
+var pName=localStorage.getItem("product")
+var Name
 
+if(pName==='giftcard'){
+    Name='Gift Card'
+}
+else if(pName==='mug'){
+    Name='Mug'
+}
+else if(pName==='bluepack'){
+    Name='Blue Canvas Backpack'
+}
+else if(pName==='greenpack'){
+    Name='Green Backpack'
+}
+else if(pName==='tent'){
+    Name='White Tent'
+}
 
 function openCart(){
     shoppingCart.classList.remove('hidden')
@@ -18,7 +35,7 @@ function openCart(){
 function checkProduct(){
     const listItems = cartList.getElementsByTagName("li")
     for (let i = 0; i <= listItems.length - 1; i++) {
-        if(listItems[i].id =="gift-card"){
+        if(listItems[i].id ==pName){
             return true
         }
     }
@@ -33,13 +50,24 @@ function cartChange(){
     }
     console.log(products)
     var priceTotal=0
-    let currentQuant
     products.forEach((product)=>{
-        if(product=="gift-card"){
-            currentQuant=document.getElementById('gift-input')
-            priceTotal+=currentQuant.value*25
+        if(product=="giftcard"){
+            let quant=document.getElementById('giftcard-input')
+            priceTotal += quant.value * 25
         }
-        else{
+        else if(product=="bluepack"){
+            let quant=document.getElementById('bluepack-input')
+            priceTotal += quant.value * 95
+        }
+        else if(product=="tent"){
+            let quant=document.getElementById('tent-input')
+            priceTotal += quant.value * 200
+        }
+        else if(product=="mug"){
+            let quant=document.getElementById('mug-input')
+            priceTotal += quant.value * 35
+        }
+        else if(product==="greenpack"){
             priceTotal+=bagQuantity.value*125
         }
     })
@@ -53,28 +81,34 @@ let removeProduct=(object)=>{
     cartChange()
 }
 
+function addProduct(){
+    let newProduct=`
+        <li id="${pName}">
+            <div class="cart-image">
+                <img src="${image}" alt="">
+            </div>
+            <div class="cart-product-details">
+                <p class="cart-product-name">${Name}</p>
+                <p class="price cart-price">${price}</p>
+                <button onclick="removeProduct(this)">Remove</button>
+            </div>
+            <input type="number" min="0" class="cart-quantity" value="${inputQuant.value}" id="${pName}-input" onChange="cartChange()">
+        </li>
+    `
+    cartList.insertAdjacentHTML("beforeend",newProduct)
+}
+
+
 addToCart.addEventListener("click",()=>{
     openCart()
     let alreadyExisting=checkProduct()
     if(alreadyExisting){
-        const giftQuantity=document.getElementById("gift-input")
-        giftQuantity.value=Number(giftQuantity.value)+Number(inputQuant.value)
+        let quant=document.getElementById(`${pName}-input`)
+        quant.value=Number(quant.value)+Number(inputQuant.value)
     }
+
     else{
-        let newProduct=`
-        <li id="gift-card">
-            <div class="cart-image">
-                <img src="assets-3/giftcard.jpeg" alt="">
-            </div>
-            <div class="cart-product-details">
-                <p class="cart-product-name">Gift Card</p>
-                <p class="price cart-price">$ 25.00 USD</p>
-                <button onclick="removeProduct(this)">Remove</button>
-            </div>
-            <input type="number" min="0" class="cart-quantity" value="${inputQuant.value}" id="gift-input" onChange="cartChange()">
-        </li>
-        `
-        cartList.insertAdjacentHTML("beforeend",newProduct)
+        addProduct()
     }
     cartChange()
 })

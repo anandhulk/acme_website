@@ -18,6 +18,9 @@ else if(name==='bluepack'){
 else if(name==='greenpack'){
     name='Green Backpack'
 }
+else if(name==='tent'){
+    name='White Tent'
+}
 
 
 productName.innerHTML=name
