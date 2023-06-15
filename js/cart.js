@@ -8,7 +8,7 @@ const cartList=document.getElementById("cartList")
 const bagQuantity=document.getElementById("bag-input")
 const total=document.getElementById("total")
 
-console.log(localStorage.getItem("product"))
+
 
 function openCart(){
     shoppingCart.classList.remove('hidden')
@@ -64,7 +64,7 @@ addToCart.addEventListener("click",()=>{
         let newProduct=`
         <li id="gift-card">
             <div class="cart-image">
-                <img src="assets-3/gift-card.jpeg" alt="">
+                <img src="assets-3/giftcard.jpeg" alt="">
             </div>
             <div class="cart-product-details">
                 <p class="cart-product-name">Gift Card</p>
