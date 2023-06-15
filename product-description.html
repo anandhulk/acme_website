@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -42,11 +43,9 @@
         <div class="description">
             <h1>Gift Card</h1>
             <p class="price">$ 25.00 USD</p>
-            <P>Quantity</P>
-            <form action="#">
-                <input type="number" name="number" value="1" class="input">
-                <button class="red-white-button" type="submit" id="addToCartButton">Add to Cart</button>
-            </form>
+            <P>Quantity</P>    
+            <input type="number" name="number" value="1" min="1" class="input" id="input-quantity">
+            <button class="red-white-button" id="addToCartButton">Add to Cart</button>
             <h1 class="desc-head">What's a Rich Text Element?</h1>
             <p>The rich text element allows you to create and format heading, pragraphs,<br>blockquotes, images, and video all in one place instead of having to add and format<br>them individually. Just double-click and easily create content.</p>
             <h4>Static and dynamic content editing</h4>
@@ -69,8 +68,8 @@
         <hr>
 
         <div class="cart-products">
-            <ul>
-                <li>
+            <ul id="cartList">
+                <li id="green-bag">
                     <div class="cart-image">
                         <img src="assets-3/backpack-2.jpeg" alt="">
                     </div>
@@ -79,18 +78,7 @@
                         <p class="price cart-price">$ 125.00 USD</p>
                         <button>Remove</button>
                     </div>
-                    <input type="number" class="cart-quantity" value="1">
-                </li>
-                <li>
-                    <div class="cart-image">
-                        <img src="assets-3/gift-card.jpeg" alt="">
-                    </div>
-                    <div class="cart-product-details">
-                        <p class="cart-product-name">Gift Card</p>
-                        <p class="price cart-price">$ 25.00 USD</p>
-                        <button>Remove</button>
-                    </div>
-                    <input type="number" class="cart-quantity" value="1">
+                    <input type="number" class="cart-quantity" value="1" min="0" id="bag-input" onchange="bagChange()">
                 </li>
             </ul>
         </div>
@@ -98,7 +86,7 @@
         <hr>
         <div class="cart-checkout">
             <p>Subtotal</p>
-            <p class="price">$ 300.00 USD</p>
+            <p class="price" id="total"></p>
         </div>
         <button class="checkout-button">Continue to checkout</button>
 
