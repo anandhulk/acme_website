@@ -25,7 +25,7 @@
                 <li><a href="#">Donate</a></li>
                 <li><a href="support.html">Contact</a></li>
                 <li>
-                    <button class="cart">
+                    <button class="cart" onclick="openCart()">
                         <div class="cart-count"><p>1</p></div>
                         <img src="assets/cart.svg">
                     </button>
@@ -76,9 +76,9 @@
                     <div class="cart-product-details">
                         <p class="cart-product-name">Green Canvas Pack</p>
                         <p class="price cart-price">$ 125.00 USD</p>
-                        <button>Remove</button>
+                        <button onclick="removeProduct(this)">Remove</button>
                     </div>
-                    <input type="number" class="cart-quantity" value="1" min="0" id="bag-input" onchange="bagChange()">
+                    <input type="number" class="cart-quantity" value="1" min="0" id="bag-input" onchange="cartChange()">
                 </li>
             </ul>
         </div>

@@ -62,31 +62,31 @@
             <img src="assets-3/gift-card.jpeg" alt="">
             <p class="product-name">Gift Card</p>
             <p class="price">$ 25.00 USD</p>
-            <button class="red-button" onclick="window.location.href='product-description.html'">Details</button>
+            <button class="red-button" onclick="redirect('giftcard',25)">Details</button>
         </div>
         <div class="shop-products" id="access">
             <img src="assets-3/coffee-mug.jpeg" alt="">
             <p class="product-name">Tin Coffe Tumbler</p>
             <p class="price">$ 35.00 USD</p>
-            <button class="red-button">Details</button>
+            <button class="red-button" onclick="redirect('mug',35)">Details</button>
         </div>
         <div class="shop-products" id="bluepack">
             <img src="assets-3/backpack.jpeg" alt="">
             <p class="product-name">Blue Canvas Pack</p>
             <p class="price">$ 95.00 USD <span>$ 145.00 USD</span></p>
-            <button class="red-button">Details</button>
+            <button class="red-button" onclick="redirect('bluebag',95)">Details</button>
         </div>
         <div class="shop-products" id="greenpack">
             <img src="assets-3/backpack-2.jpeg" alt="">
             <p class="product-name">Green Canvas Pack</p>
             <p class="price">$ 125.00 USD</p>
-            <button class="red-button">Details</button>
+            <button class="red-button" onclick="redirect('greenbag',125)">Details</button>
         </div>
         <div class="shop-products" id="tent">
             <img src="assets-3/featured.jpeg" alt="">
             <p class="product-name">White Tent</p>
             <p class="price">$ 200.00 USD</p>
-            <button class="red-button">Details</button>
+            <button class="red-button" onclick="redirect('tent',200)">Details</button>
         </div>
     </div>
     <footer>
@@ -97,7 +97,7 @@
             <a href="#"><img src="assets/instagram.svg"></a>
         </div>
     </footer>
-
+    <script src="js/dynamic.js"></script>
     <script src="js/shop.js"></script>
 </body>
 </html>

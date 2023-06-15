@@ -8,7 +8,7 @@ const cartList=document.getElementById("cartList")
 const bagQuantity=document.getElementById("bag-input")
 const total=document.getElementById("total")
 
-
+console.log(localStorage.getItem("product"))
 
 function openCart(){
     shoppingCart.classList.remove('hidden')
@@ -25,32 +25,40 @@ function checkProduct(){
     return false
 }
 
-
-let giftChange=()=>{
-    const giftQuantity=document.getElementById("gift-input")
-    let giftPrice=giftQuantity.value*25
-    let bagPrice=bagQuantity.value*125
-    let price=giftPrice+bagPrice
-    total.innerHTML=`$ ${price}.00 USD`
+function cartChange(){
+    const listItems = cartList.getElementsByTagName("li")
+    let products=[]
+    for (let i = 0; i <= listItems.length - 1; i++) {
+        products.push(listItems[i].id)
+    }
+    console.log(products)
+    var priceTotal=0
+    let currentQuant
+    products.forEach((product)=>{
+        if(product=="gift-card"){
+            currentQuant=document.getElementById('gift-input')
+            priceTotal+=currentQuant.value*25
+        }
+        else{
+            priceTotal+=bagQuantity.value*125
+        }
+    })
+    total.innerHTML=`$ ${priceTotal}.00 USD`
 }
 
-let bagChange=()=>{
-    const giftQuantity=document.getElementById("gift-input")
-    let giftPrice=giftQuantity.value*25
-    let current=bagQuantity.value
-    let bagPrice=current*125
-    let price=giftPrice+bagPrice
-    total.innerHTML=`$ ${price}.00 USD`
-    
+
+let removeProduct=(object)=>{
+    console.log("remove")
+    object.parentElement.parentElement.remove()
+    cartChange()
 }
-
-
 
 addToCart.addEventListener("click",()=>{
     openCart()
     let alreadyExisting=checkProduct()
     if(alreadyExisting){
-        quantity.value=Number(quantity.value)+Number(inputQuant.value)
+        const giftQuantity=document.getElementById("gift-input")
+        giftQuantity.value=Number(giftQuantity.value)+Number(inputQuant.value)
     }
     else{
         let newProduct=`
@@ -61,15 +69,14 @@ addToCart.addEventListener("click",()=>{
             <div class="cart-product-details">
                 <p class="cart-product-name">Gift Card</p>
                 <p class="price cart-price">$ 25.00 USD</p>
-                <button>Remove</button>
+                <button onclick="removeProduct(this)">Remove</button>
             </div>
-            <input type="number" min="0" class="cart-quantity" value="${inputQuant.value}" id="gift-input" onChange="giftChange()">
+            <input type="number" min="0" class="cart-quantity" value="${inputQuant.value}" id="gift-input" onChange="cartChange()">
         </li>
         `
         cartList.insertAdjacentHTML("beforeend",newProduct)
-        giftChange()
     }
-    
+    cartChange()
 })
 
 cartExit.addEventListener("click",()=>{
