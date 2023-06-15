@@ -865,3 +865,7 @@ description h4{
     text-decoration: line-through;
     padding-left:10px ;
 }
+
+.visible{
+    display: block;
+}
