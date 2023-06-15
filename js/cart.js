@@ -5,7 +5,6 @@ const cartExit=document.getElementById("cartExit")
 
 const inputQuant=document.getElementById("input-quantity")
 const cartList=document.getElementById("cartList")
-const bagQuantity=document.getElementById("greenpack-input")
 const total=document.getElementById("total")
 
 var pName=localStorage.getItem("product")
@@ -28,12 +27,13 @@ else if(pName==='tent'){
 }
 
 function openCart(){
+    cartChange()
     shoppingCart.classList.remove('hidden')
     overlay.classList.remove('hidden')
 }
 
 function checkProduct(){
-    const listItems = cartList.getElementsByTagName("li")
+    let listItems = cartList.getElementsByTagName("li")
     for (let i = 0; i <= listItems.length - 1; i++) {
         if(listItems[i].id ==pName){
             return true
@@ -43,7 +43,7 @@ function checkProduct(){
 }
 
 function cartChange(){
-    const listItems = cartList.getElementsByTagName("li")
+    let listItems = cartList.getElementsByTagName("li")
     let products=[]
     for (let i = 0; i <= listItems.length - 1; i++) {
         products.push(listItems[i].id)
@@ -68,6 +68,7 @@ function cartChange(){
             priceTotal += quant.value * 35
         }
         else if(product==="greenpack"){
+            let bagQuantity=document.getElementById("greenpack-input")
             priceTotal+=bagQuantity.value*125
         }
     })
@@ -116,6 +117,15 @@ addToCart.addEventListener("click",()=>{
 cartExit.addEventListener("click",()=>{
     shoppingCart.classList.add('hidden')
     overlay.classList.add('hidden')
+    let listItems = cartList.getElementsByTagName("li")
+    let cartData=[];
+    for (let i = 0; i <= listItems.length - 1; i++) {
+        let item=listItems[i].id
+        let quant=document.getElementById(`${item}-input`)
+        cartData.push({name:item,quantity:quant.value})
+    }
+    console.log(cartData)
+    localStorage.setItem("cart",JSON.stringify(cartData))
 })
 
 
