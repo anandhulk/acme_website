@@ -22,7 +22,7 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="shop.html">Shop</a></li>
                 <li><a href="#">Donate</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="support.html">Contact</a></li>
                 <li>
                     <button class="cart">
                         <div class="cart-count"><p>1</p></div>
@@ -55,8 +55,7 @@
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque, aut.<br>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur, voluptatum!<br>Lorem ipsum dolor.</p>
             <h2>Tweet about #AcmeOutdoors products</h2>
             <div class="tweet">
-                <img src="assets-3/icons8-twitter-48.png" alt="">
-                <p>Tweet</p>
+                <img src="assets-3/icons8-twitter-48.png" alt=""><span>Tweet</span>
             </div>
         </div>
     </div>
@@ -70,7 +69,30 @@
         <hr>
 
         <div class="cart-products">
-
+            <ul>
+                <li>
+                    <div class="cart-image">
+                        <img src="assets-3/backpack-2.jpeg" alt="">
+                    </div>
+                    <div class="cart-product-details">
+                        <p class="cart-product-name">Green Canvas Pack</p>
+                        <p class="price cart-price">$ 125.00 USD</p>
+                        <button>Remove</button>
+                    </div>
+                    <input type="number" class="cart-quantity" value="1">
+                </li>
+                <li>
+                    <div class="cart-image">
+                        <img src="assets-3/gift-card.jpeg" alt="">
+                    </div>
+                    <div class="cart-product-details">
+                        <p class="cart-product-name">Gift Card</p>
+                        <p class="price cart-price">$ 25.00 USD</p>
+                        <button>Remove</button>
+                    </div>
+                    <input type="number" class="cart-quantity" value="1">
+                </li>
+            </ul>
         </div>
 
         <hr>
@@ -92,6 +114,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 </html>

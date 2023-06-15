@@ -13,7 +13,3 @@ cartExit.addEventListener("click",()=>{
     shoppingCart.classList.add('hidden')
     overlay.classList.add('hidden')
 })
-
-
-
-
