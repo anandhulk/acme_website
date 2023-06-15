@@ -45,7 +45,7 @@
             <P>Quantity</P>
             <form action="#">
                 <input type="number" name="number" value="1" class="input">
-                <button class="red-white-button" type="submit">Add to Cart</button>
+                <button class="red-white-button" type="submit" id="addToCartButton">Add to Cart</button>
             </form>
             <h1 class="desc-head">What's a Rich Text Element?</h1>
             <p>The rich text element allows you to create and format heading, pragraphs,<br>blockquotes, images, and video all in one place instead of having to add and format<br>them individually. Just double-click and easily create content.</p>
@@ -61,6 +61,28 @@
         </div>
     </div>
 
+    <div id="shoppingCart" class="hidden">
+
+        <div class="cart-header">
+            <p> Your Cart</p>
+            <button id="cartExit">x</button>
+        </div>
+        <hr>
+
+        <div class="cart-products">
+
+        </div>
+
+        <hr>
+        <div class="cart-checkout">
+            <p>Subtotal</p>
+            <p class="price">$ 300.00 USD</p>
+        </div>
+        <button class="checkout-button">Continue to checkout</button>
+
+    </div>
+
+    <div id="overlay" class="overlay hidden"></div>
     <footer>
         <img class="footer-logo" src="assets/acme-logo.svg">
         <div>
@@ -69,5 +91,7 @@
             <a href="#"><img src="assets/instagram.svg"></a>
         </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
