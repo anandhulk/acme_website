@@ -12,6 +12,11 @@ const tent=document.getElementById("tent")
 
 
 giftBtn.addEventListener("click",()=>{
+    giftBtn.classList.add("black-btn")
+    tentBtn.classList.remove("black-btn")
+    accessBtn.classList.remove("black-btn")
+    packBtn.classList.remove("black-btn")
+
     access.classList.add('hidden')
     bluepack.classList.add('hidden')
     greenpack.classList.add('hidden')
@@ -20,6 +25,11 @@ giftBtn.addEventListener("click",()=>{
 })
 
 accessBtn.addEventListener("click",()=>{
+    giftBtn.classList.remove("black-btn")
+    tentBtn.classList.remove("black-btn")
+    accessBtn.classList.add("black-btn")
+    packBtn.classList.remove("black-btn")
+
     access.classList.remove('hidden')
     bluepack.classList.add('hidden')
     greenpack.classList.add('hidden')
@@ -28,6 +38,11 @@ accessBtn.addEventListener("click",()=>{
 })
 
 packBtn.addEventListener("click",()=>{
+    giftBtn.classList.remove("black-btn")
+    tentBtn.classList.remove("black-btn")
+    accessBtn.classList.remove("black-btn")
+    packBtn.classList.add("black-btn")
+
     access.classList.add('hidden')
     bluepack.classList.remove('hidden')
     greenpack.classList.remove('hidden')
@@ -36,6 +51,11 @@ packBtn.addEventListener("click",()=>{
 })
 
 tentBtn.addEventListener("click",()=>{
+    giftBtn.classList.remove("black-btn")
+    tentBtn.classList.add("black-btn")
+    accessBtn.classList.remove("black-btn")
+    packBtn.classList.remove("black-btn")
+
     access.classList.add('hidden')
     bluepack.classList.add('hidden')
     greenpack.classList.add('hidden')

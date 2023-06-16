@@ -737,18 +737,22 @@ description h4{
     margin-top: 20px;
 }
 
-.contact-form input{
+.input-support{
+    margin-top: 3px;
     width:700px;
-    height: 25px;
-    margin-top: 5px;
+    height: 30px;
+    padding: 10px;
     padding-left: 20px;
     border:1px solid black;
     border-radius: 5px;
 }
 
 .input-message{
-    padding-top: 10px;
-    padding-bottom: 30px;
+    margin-top: 3px;
+    width:700px;
+    padding:10px 0 30px 20px;
+    border:1px solid black;
+    border-radius: 5px;
 }
 
 #shoppingCart{
@@ -932,4 +936,9 @@ description h4{
 
 hr{
     border: 0.2px dotted rgb(191, 191, 191);
+}
+
+.black-btn{
+    background-color: black;
+    color: white;
 }
