@@ -14,6 +14,24 @@ function openCart(){
     overlay.classList.remove('hidden')
 }
 
+function exitCart(){
+    console.log("clicked exitCart")
+    shoppingCart.classList.add('hidden')
+    overlay.classList.add('hidden')
+    let listItems = cartList.getElementsByTagName("li")
+    let cartData=[];
+    for (let i = 0; i <= listItems.length - 1; i++) {
+        let item=listItems[i].id
+        let quant=document.getElementById(`${item}-input`)
+        cartData.push({name:item,quantity:quant.value})
+    }
+    console.log(cartData)
+    localStorage.setItem("cart",JSON.stringify(cartData))
+    currentCart=localStorage.getItem("cart")
+    currentCart=JSON.parse(currentCart)
+    console.log("cart exited "+currentCart.length)
+    cartCount.innerHTML=currentCart.length
+}
 
 cartCount.innerHTML=currentCart.length
 
@@ -56,24 +74,24 @@ let removeProduct=(object)=>{
     cartChange()
 }
 
-cartExit.addEventListener("click",()=>{
-    console.log("clicked exit..")
-    shoppingCart.classList.add('hidden')
-    overlay.classList.add('hidden')
-    let listItems = cartList.getElementsByTagName("li")
-    let cartData=[];
-    for (let i = 0; i <= listItems.length - 1; i++) {
-        let item=listItems[i].id
-        let quant=document.getElementById(`${item}-input`)
-        cartData.push({name:item,quantity:quant.value})
-    }
-    console.log(cartData)
-    localStorage.setItem("cart",JSON.stringify(cartData))
-    currentCart=localStorage.getItem("cart")
-    currentCart=JSON.parse(currentCart)
-    console.log("cart exited "+currentCart.length)
-    cartCount.innerHTML=currentCart.length
-})
+// cartExit.addEventListener("click",()=>{
+//     console.log("clicked exit..")
+//     shoppingCart.classList.add('hidden')
+//     overlay.classList.add('hidden')
+//     let listItems = cartList.getElementsByTagName("li")
+//     let cartData=[];
+//     for (let i = 0; i <= listItems.length - 1; i++) {
+//         let item=listItems[i].id
+//         let quant=document.getElementById(`${item}-input`)
+//         cartData.push({name:item,quantity:quant.value})
+//     }
+//     console.log(cartData)
+//     localStorage.setItem("cart",JSON.stringify(cartData))
+//     currentCart=localStorage.getItem("cart")
+//     currentCart=JSON.parse(currentCart)
+//     console.log("cart exited "+currentCart.length)
+//     cartCount.innerHTML=currentCart.length
+// })
 
 
 currentCart.forEach((obj)=>{
