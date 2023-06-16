@@ -1,10 +1,7 @@
-const shoppingCart=document.getElementById("shoppingCart")
-const overlay=document.getElementById("overlay")
 const addToCart=document.getElementById("addToCartButton")
-const cartExit=document.getElementById("cartExit")
 
 const inputQuant=document.getElementById("input-quantity")
-const cartList=document.getElementById("cartList")
+
 const total=document.getElementById("total")
 
 var pName=localStorage.getItem("product")
@@ -26,12 +23,6 @@ else if(pName==='tent'){
     Name='White Tent'
 }
 
-function openCart(){
-    cartChange()
-    shoppingCart.classList.remove('hidden')
-    overlay.classList.remove('hidden')
-}
-
 function checkProduct(){
     let listItems = cartList.getElementsByTagName("li")
     for (let i = 0; i <= listItems.length - 1; i++) {
@@ -42,45 +33,6 @@ function checkProduct(){
     return false
 }
 
-function cartChange(){
-    let listItems = cartList.getElementsByTagName("li")
-    let products=[]
-    for (let i = 0; i <= listItems.length - 1; i++) {
-        products.push(listItems[i].id)
-    }
-    console.log(products)
-    var priceTotal=0
-    products.forEach((product)=>{
-        if(product=="giftcard"){
-            let quant=document.getElementById('giftcard-input')
-            priceTotal += quant.value * 25
-        }
-        else if(product=="bluepack"){
-            let quant=document.getElementById('bluepack-input')
-            priceTotal += quant.value * 95
-        }
-        else if(product=="tent"){
-            let quant=document.getElementById('tent-input')
-            priceTotal += quant.value * 200
-        }
-        else if(product=="mug"){
-            let quant=document.getElementById('mug-input')
-            priceTotal += quant.value * 35
-        }
-        else if(product==="greenpack"){
-            let bagQuantity=document.getElementById("greenpack-input")
-            priceTotal+=bagQuantity.value*125
-        }
-    })
-    total.innerHTML=`$ ${priceTotal}.00 USD`
-}
-
-
-let removeProduct=(object)=>{
-    console.log("remove")
-    object.parentElement.parentElement.remove()
-    cartChange()
-}
 
 function addProduct(){
     let newProduct=`
@@ -101,31 +53,22 @@ function addProduct(){
 
 
 addToCart.addEventListener("click",()=>{
-    openCart()
-    let alreadyExisting=checkProduct()
-    if(alreadyExisting){
-        let quant=document.getElementById(`${pName}-input`)
-        quant.value=Number(quant.value)+Number(inputQuant.value)
-    }
+    addToCart.innerHTML="Adding to cart..."
+    const myTimeout = setTimeout(()=>{
+        openCart()
+        let alreadyExisting=checkProduct()
+        if(alreadyExisting){
+            let quant=document.getElementById(`${pName}-input`)
+            quant.value=Number(quant.value)+Number(inputQuant.value)
+        }
 
-    else{
-        addProduct()
-    }
-    cartChange()
+        else{
+            addProduct()
+        }
+        cartChange()
+        addToCart.innerHTML="Add to Cart"
+    }, 400);
 })
 
-cartExit.addEventListener("click",()=>{
-    shoppingCart.classList.add('hidden')
-    overlay.classList.add('hidden')
-    let listItems = cartList.getElementsByTagName("li")
-    let cartData=[];
-    for (let i = 0; i <= listItems.length - 1; i++) {
-        let item=listItems[i].id
-        let quant=document.getElementById(`${item}-input`)
-        cartData.push({name:item,quantity:quant.value})
-    }
-    console.log(cartData)
-    localStorage.setItem("cart",JSON.stringify(cartData))
-})
 
 

@@ -212,6 +212,11 @@ footer div img{
     
 }
 
+.transparent-button:hover{
+    background-color: white;
+    color: black;
+}
+
 .blackbox{
     background-color: rgb(34, 34, 34);
     overflow: hidden;
@@ -604,6 +609,11 @@ description h4{
     cursor: pointer;
 }
 
+.red-white-button:hover{
+    background-color:rgb(243, 48, 84);
+    color: white;
+}
+
 .tweet{
     border: none;
     background-color: rgb(18, 144, 255);
@@ -908,4 +918,12 @@ description h4{
 
 .visible{
     display: block;
+}
+
+.bluepack{
+    position: relative;
+}
+
+.sale-tag-shop{
+    bottom: 370px;
 }

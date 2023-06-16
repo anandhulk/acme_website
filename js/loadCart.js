@@ -1,21 +1,79 @@
+const shoppingCart=document.getElementById("shoppingCart")
+const overlay=document.getElementById("overlay")
+const cartExit=document.getElementById("cartExit")
+const cartList=document.getElementById("cartList")
+const cartCount=document.getElementById("cartCount")
+
 currentCart=localStorage.getItem("cart")
 currentCart=JSON.parse(currentCart)
 var NAME,PRICE
-const OGprice={
-    "giftcard":25,
-    "greenpack":125,
-    "bluepack":95,
-    "tent":200,
-    "mug":35
+
+function openCart(){
+    cartChange()
+    shoppingCart.classList.remove('hidden')
+    overlay.classList.remove('hidden')
 }
 
-const real={
-    "giftcard":"Gift Card",
-    "greenpack":"Green Backpack",
-    "bluepack":"Blue Canvas Backpack",
-    "tent":"White Tent",
-    "mug":"Coffe Mug"
+
+cartCount.innerHTML=currentCart.length
+
+function cartChange(){
+    let listItems = cartList.getElementsByTagName("li")
+    let products=[]
+    for (let i = 0; i <= listItems.length - 1; i++) {
+        products.push(listItems[i].id)
+    }
+    console.log(products)
+    var priceTotal=0
+    products.forEach((product)=>{
+        if(product=="giftcard"){
+            let quant=document.getElementById('giftcard-input')
+            priceTotal += quant.value * 25
+        }
+        else if(product=="bluepack"){
+            let quant=document.getElementById('bluepack-input')
+            priceTotal += quant.value * 95
+        }
+        else if(product=="tent"){
+            let quant=document.getElementById('tent-input')
+            priceTotal += quant.value * 200
+        }
+        else if(product=="mug"){
+            let quant=document.getElementById('mug-input')
+            priceTotal += quant.value * 35
+        }
+        else if(product==="greenpack"){
+            let bagQuantity=document.getElementById("greenpack-input")
+            priceTotal+=bagQuantity.value*125
+        }
+    })
+    total.innerHTML=`$ ${priceTotal}.00 USD`
 }
+
+let removeProduct=(object)=>{
+    console.log("remove")
+    object.parentElement.parentElement.remove()
+    cartChange()
+}
+
+cartExit.addEventListener("click",()=>{
+    shoppingCart.classList.add('hidden')
+    overlay.classList.add('hidden')
+    let listItems = cartList.getElementsByTagName("li")
+    let cartData=[];
+    for (let i = 0; i <= listItems.length - 1; i++) {
+        let item=listItems[i].id
+        let quant=document.getElementById(`${item}-input`)
+        cartData.push({name:item,quantity:quant.value})
+    }
+    console.log(cartData)
+    localStorage.setItem("cart",JSON.stringify(cartData))
+    currentCart=localStorage.getItem("cart")
+    currentCart=JSON.parse(currentCart)
+    console.log("cart exited "+currentCart.length)
+    cartCount.innerHTML=currentCart.length
+})
+
 
 currentCart.forEach((obj)=>{
     if(obj.name==='giftcard'){

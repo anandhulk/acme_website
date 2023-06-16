@@ -26,7 +26,7 @@
                 <li><a href="support.html">Contact</a></li>
                 <li>
                     <button class="cart" onclick="openCart()">
-                        <div class="cart-count"><p>1</p></div>
+                        <div class="cart-count"><p id="cartCount">1</p></div>
                         <img src="assets/cart.svg">
                     </button>
                 </li>
@@ -69,17 +69,6 @@
 
         <div class="cart-products">
             <ul id="cartList">
-                <!-- <li id="greenpack">
-                    <div class="cart-image">
-                        <img src="assets-3/greenpack.jpeg" alt="">
-                    </div>
-                    <div class="cart-product-details">
-                        <p class="cart-product-name">Green Canvas Pack</p>
-                        <p class="price cart-price">$ 125.00 USD</p>
-                        <button onclick="removeProduct(this)">Remove</button>
-                    </div>
-                    <input type="number" class="cart-quantity" value="1" min="0" id="greenpack-input" onchange="cartChange()">
-                </li> -->
             </ul>
         </div>
 
@@ -101,8 +90,8 @@
             <a href="#"><img src="assets/instagram.svg"></a>
         </div>
     </footer>
-    <script src="js/description.js"></script>
-    <script src="js/cart.js"></script>
     <script src="js/loadCart.js"></script>
+    <script src="js/description.js"></script>
+    <script src="js/cart.js"></script> 
 </body>
 </html>

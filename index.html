@@ -27,8 +27,8 @@
                 <li><a href="#">Donate</a></li>
                 <li><a href="support.html">Contact</a></li>
                 <li>
-                    <button class="cart">
-                        <div class="cart-count"><p>0</p></div>
+                    <button class="cart" onclick="openCart()">
+                        <div class="cart-count"><p id="cartCount">0</p></div>
                         <img src="assets/cart.svg">
                     </button>
                 </li>
@@ -153,7 +153,29 @@
         </div>
         <img src="assets/profile.jpg" alt="">
     </div>
+    <div id="shoppingCart" class="hidden">
 
+        <div class="cart-header">
+            <p> Your Cart</p>
+            <button id="cartExit">x</button>
+        </div>
+        <hr>
+
+        <div class="cart-products">
+            <ul id="cartList">
+            </ul>
+        </div>
+
+        <hr>
+        <div class="cart-checkout">
+            <p>Subtotal</p>
+            <p class="price" id="total"></p>
+        </div>
+        <button class="checkout-button">Continue to checkout</button>
+
+    </div>
+
+    <div id="overlay" class="overlay hidden"></div>
     <footer>
         <img class="footer-logo" src="assets/acme-logo.svg">
         <div>
@@ -163,6 +185,7 @@
         </div>
     </footer>
 
+    <script src="js/loadCart.js"></script>
     <script src="js/dynamic.js"></script>
 </body>
 </html>
