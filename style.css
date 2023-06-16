@@ -927,3 +927,7 @@ description h4{
 .sale-tag-shop{
     bottom: 370px;
 }
+
+hr{
+    border: 0.2px dotted rgb(191, 191, 191);
+}
