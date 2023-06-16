@@ -4,7 +4,7 @@ const cartExit=document.getElementById("cartExit")
 const cartList=document.getElementById("cartList")
 const cartCount=document.getElementById("cartCount")
 
-currentCart=localStorage.getItem("cart")
+let currentCart=localStorage.getItem("cart")
 currentCart=JSON.parse(currentCart)
 var NAME,PRICE
 
@@ -23,7 +23,7 @@ function cartChange(){
     for (let i = 0; i <= listItems.length - 1; i++) {
         products.push(listItems[i].id)
     }
-    console.log(products)
+    // console.log(products)
     var priceTotal=0
     products.forEach((product)=>{
         if(product=="giftcard"){
@@ -57,6 +57,7 @@ let removeProduct=(object)=>{
 }
 
 cartExit.addEventListener("click",()=>{
+    console.log("clicked exit..")
     shoppingCart.classList.add('hidden')
     overlay.classList.add('hidden')
     let listItems = cartList.getElementsByTagName("li")
@@ -110,7 +111,7 @@ currentCart.forEach((obj)=>{
         <input type="number" min="0" class="cart-quantity" value="${obj.quantity}" id="${obj.name}-input" onChange="cartChange()">
     </li>
     `
-    console.log(product)
+    // console.log(product)
     cartList.insertAdjacentHTML("beforeend",product)
 })
 
