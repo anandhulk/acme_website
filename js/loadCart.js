@@ -4,6 +4,8 @@ const cartExit=document.getElementById("cartExit")
 const cartList=document.getElementById("cartList")
 const cartCount=document.getElementById("cartCount")
 
+document.cookie = "username=John Doe; expires=Thu, 18 Dec 2024 12:00:00 UTC";
+
 let currentCart=localStorage.getItem("cart")
 currentCart=JSON.parse(currentCart)
 var NAME,PRICE
