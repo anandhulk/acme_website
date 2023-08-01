@@ -35,7 +35,9 @@ function exitCart(){
     cartCount.innerHTML=currentCart.length
 }
 
-cartCount.innerHTML=currentCart.length
+if(currentCart){
+    cartCount.innerHTML=currentCart.length
+}
 
 function cartChange(){
     let listItems = cartList.getElementsByTagName("li")
