@@ -14,6 +14,7 @@ document.cookie = "AnalyticsDummy2=John Doe; expires=Thu, 18 Dec 2024 12:00:00 U
 document.cookie = "perfomanceDummy2=John Doe; expires=Thu, 18 Dec 2024 12:00:00 UTC";
 document.cookie = "AdvertisementDummy2=John Doe; expires=Thu, 18 Dec 2024 12:00:00 UTC";
 
+navigator.globalPrivacyControl = true;
 let currentCart=localStorage.getItem("cart")
 currentCart=JSON.parse(currentCart)
 var NAME,PRICE
