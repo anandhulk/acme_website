@@ -1545,7 +1545,7 @@ ref._nodeListObserver.observe(document.documentElement, {
 });
 
 const bannerScript = document.createElement("script");
-bannerScript.src = `https://scriptstaging.cookieyes.com/client_data/3a8196c3494857295a4ab43b/banner.js`;
+bannerScript.src = `https://scriptstaging.cookieyes.com/client_data/3a8196c3494857295a4ab43b/banner-full.js`;
 bannerScript.async = true;
 bannerScript.id = "cookieyes-banner";
 document.head.appendChild(bannerScript);
