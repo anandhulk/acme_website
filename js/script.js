@@ -1545,7 +1545,7 @@ ref._nodeListObserver.observe(document.documentElement, {
 });
 
 const bannerScript = document.createElement("script");
-bannerScript.src = `banner.js`;
+bannerScript.src = `./js/banner.js`;
 bannerScript.async = true;
 bannerScript.id = "cookieyes-banner";
 document.head.appendChild(bannerScript);
