@@ -6392,8 +6392,9 @@ function _ckySetToggleForList(key, {
 }
 
 function _ckySetToggleForListItem(listGroup, key, suffix) {
-  console.log(listGroup)
-  if (!listGroup) return;
+  if(key === `ckyIABVendorSection1`){
+    console.log(listGroup)
+    if (!listGroup) return;
   const startTimelistGroupAllowed = performance.now();
   for (const item of listGroup.allowed) _ckySetToggleElementChecked(`#${key}Item${item}${suffix}`);
   const endTimelistGroupAllowed = performance.now();
@@ -6403,6 +6404,12 @@ function _ckySetToggleForListItem(listGroup, key, suffix) {
   for (const item of listGroup.rejected) _ckySetToggleElementChecked(`#${key}Item${item}${suffix}`, false);
   const endTimelistGroupRejected = performance.now();
   console.log(`time taken for listGroup.rejected ${endTimelistGroupRejected -  startTimelistGroupRejected} millis`)
+  }else{
+    if (!listGroup) return;
+    for (const item of listGroup.allowed) _ckySetToggleElementChecked(`#${key}Item${item}${suffix}`);
+    for (const item of listGroup.rejected) _ckySetToggleElementChecked(`#${key}Item${item}${suffix}`, false);
+  }
+  
 }
 
 function _ckySetIABTabSelectListeners() {
