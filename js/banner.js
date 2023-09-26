@@ -6365,11 +6365,30 @@ function _ckySetToggleForList(key, {
   legitimateInterest,
   sectionChecked
 }) {
-  _ckySetToggleElementChecked(`#${key}Toggle`, sectionChecked);
+  if(key === `ckyIABVendorSection1`){
 
-  _ckySetToggleForListItem(consent, key, "ToggleConsent");
+    const startTime_ckySetToggleElementChecked = performance.now();
+    _ckySetToggleElementChecked(`#${key}Toggle`, sectionChecked);
+    const endTime_ckySetToggleElementChecked = performance.now();
+  console.log(`time taken for _ckySetToggleElementChecked ${endTime_ckySetToggleElementChecked -  startTime_ckySetToggleElementChecked} millis`)
 
-  _ckySetToggleForListItem(legitimateInterest, key, "ToggleLegitimate");
+  const startTimeToggleConsent = performance.now();
+    _ckySetToggleForListItem(consent, key, "ToggleConsent");
+    const endTimeToggleConsent = performance.now();
+  console.log(`time taken for ToggleConsent ${endTimeToggleConsent -  startTimeToggleConsent} millis`)
+
+  const startTimeToggleLegitimate = performance.now();
+    _ckySetToggleForListItem(legitimateInterest, key, "ToggleLegitimate");
+    const endTimeToggleLegitimate = performance.now();
+  console.log(`time taken for ToggleLegitimate ${endTimeToggleLegitimate -  startTimeToggleLegitimate} millis`)
+  }else{
+    _ckySetToggleElementChecked(`#${key}Toggle`, sectionChecked);
+
+    _ckySetToggleForListItem(consent, key, "ToggleConsent");
+
+    _ckySetToggleForListItem(legitimateInterest, key, "ToggleLegitimate");
+  }
+  
 }
 
 function _ckySetToggleForListItem(listGroup, key, suffix) {
