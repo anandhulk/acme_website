@@ -7176,9 +7176,15 @@ function _ckySetIABConsentState(choice = "all") {
 
     _ckySetGoogleACMState(Array.from(ref._tcModal.gvl.googleVendorIds));
   } else {
+    const startTimeTCfUnset = performance.now();
     ref._tcModal.unsetAll();
+    const endTimeTCfUnset = performance.now();
+    console.log(`time taken for ref._tcModal.unsetAll ${startTimeTCfUnset - endTimeTCfUnset} millis`)
 
+    const startTime_ckySetGoogleACMState = performance.now();
     _ckySetGoogleACMState([]);
+    const endTime_ckySetGoogleACMState = performance.now();
+    console.log(`time taken for _ckySetGoogleACMState ${startTime_ckySetGoogleACMState - endTime_ckySetGoogleACMState} millis`)
 
     const {
       activeLaw
@@ -7201,9 +7207,15 @@ function _ckySetIABConsentState(choice = "all") {
     }
   }
 
+  const startTime_ckySetCookie = performance.now();
   ref._ckySetCookie("euconsent", `${_ckyGetTCEncodedString()},${ref._addtlConsent || ""}`, ref._ckyStore._bannerConfig.scriptExpiry);
+  const endTime_ckySetCookie = performance.now();
+  console.log(`time taken for _ckySetCookie ${startTime_ckySetCookie - endTime_ckySetCookie} millis`)
 
+  const startTime_ckyPopulateIABSetSelections = performance.now();
   _ckyPopulateIABSetSelections();
+  const endTime_ckyPopulateIABSetSelections = performance.now();
+  console.log(`time taken for _ckyPopulateIABSetSelections ${startTime_ckyPopulateIABSetSelections - endTime_ckyPopulateIABSetSelections} millis`)
 }
 
 function _ckyGetIABVendorsForUI() {
