@@ -7288,6 +7288,7 @@ function _ckyGetIABVendorsForUI() {
     }
   };
 
+  console.log(ref._tcModal.vendorConsents);
   ref._tcModal.vendorConsents.forEach((hasConsent, vendorId) => {
     if (hasConsent) response.consent.allowed.push(vendorId);else response.consent.rejected.push(vendorId);
   });
