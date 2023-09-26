@@ -6319,45 +6319,45 @@ function _ckyIABGetChoicesForSection(key, list, sectionID) {
 
 function _ckyPopulateIABSetSelections() {
 
-  const startTime_ckyGetIABVendorsForUI = performance.now();
+  // const startTime_ckyGetIABVendorsForUI = performance.now();
   const vendorData = _ckyGetIABVendorsForUI();
-  const endTime_ckyGetIABVendorsForUI = performance.now();
-  console.log(`time taken for _ckyGetIABVendorsForUI ${endTime_ckyGetIABVendorsForUI - startTime_ckyGetIABVendorsForUI} millis`)
+  // const endTime_ckyGetIABVendorsForUI = performance.now();
+  // console.log(`time taken for _ckyGetIABVendorsForUI ${endTime_ckyGetIABVendorsForUI - startTime_ckyGetIABVendorsForUI} millis`)
 
-  const startTime_ckyGetGoogleVendorsForUI = performance.now();
+  // const startTime_ckyGetGoogleVendorsForUI = performance.now();
   const googleVendorData = _ckyGetGoogleVendorsForUI();
-  const endTime_ckyGetGoogleVendorsForUI = performance.now();
-  console.log(`time taken for _ckyGetGoogleVendorsForUI ${endTime_ckyGetGoogleVendorsForUI -  startTime_ckyGetGoogleVendorsForUI} millis`)
+  // const endTime_ckyGetGoogleVendorsForUI = performance.now();
+  // console.log(`time taken for _ckyGetGoogleVendorsForUI ${endTime_ckyGetGoogleVendorsForUI -  startTime_ckyGetGoogleVendorsForUI} millis`)
 
-  const startTime_ckyGetIABPurposeForUI = performance.now();
+  // const startTime_ckyGetIABPurposeForUI = performance.now();
   const purposeData = _ckyGetIABPurposeForUI();
-  const endTime_ckyGetIABPurposeForUI = performance.now();
-  console.log(`time taken for _ckyGetIABPurposeForUI ${endTime_ckyGetIABPurposeForUI -  startTime_ckyGetIABPurposeForUI} millis`)
+  // const endTime_ckyGetIABPurposeForUI = performance.now();
+  // console.log(`time taken for _ckyGetIABPurposeForUI ${endTime_ckyGetIABPurposeForUI -  startTime_ckyGetIABPurposeForUI} millis`)
 
-  const startTime_ckyGetIABFeaturesForUI = performance.now();
+  // const startTime_ckyGetIABFeaturesForUI = performance.now();
   const featureData = _ckyGetIABFeaturesForUI();
-  const endTime_ckyGetIABFeaturesForUI = performance.now();
-  console.log(`time taken for _ckyGetIABFeaturesForUI ${endTime_ckyGetIABFeaturesForUI -  startTime_ckyGetIABFeaturesForUI} millis`)
+  // const endTime_ckyGetIABFeaturesForUI = performance.now();
+  // console.log(`time taken for _ckyGetIABFeaturesForUI ${endTime_ckyGetIABFeaturesForUI -  startTime_ckyGetIABFeaturesForUI} millis`)
 
-  const startTimevendorData = performance.now();
+  // const startTimevendorData = performance.now();
   _ckySetToggleForList(`ckyIABVendorSection1`, vendorData);
-  const endTimevendorData = performance.now();
-  console.log(`time taken for vendorData ${endTimevendorData -  startTimevendorData} millis`)
+  // const endTimevendorData = performance.now();
+  // console.log(`time taken for vendorData ${endTimevendorData -  startTimevendorData} millis`)
 
-  const startTimegoogleVendorData = performance.now();
+  // const startTimegoogleVendorData = performance.now();
   _ckySetToggleForList(`ckyIABVendorSection2`, googleVendorData);
-  const endTime_googleVendorData = performance.now();
-  console.log(`time taken for googleVendorData ${endTime_googleVendorData -  startTimegoogleVendorData} millis`)
+  // const endTime_googleVendorData = performance.now();
+  // console.log(`time taken for googleVendorData ${endTime_googleVendorData -  startTimegoogleVendorData} millis`)
 
-  const startTimepurposeData = performance.now();
+  // const startTimepurposeData = performance.now();
   _ckySetToggleForList(`ckyIABPNFSection1`, purposeData);
-  const endTimepurposeData = performance.now();
-  console.log(`time taken for purposeData ${endTimepurposeData -  startTimepurposeData} millis`)
+  // const endTimepurposeData = performance.now();
+  // console.log(`time taken for purposeData ${endTimepurposeData -  startTimepurposeData} millis`)
 
-  const startTimefeatureData = performance.now();
+  // const startTimefeatureData = performance.now();
   _ckySetToggleForList(`ckyIABPNFSection4`, featureData);
-  const endTimefeatureData = performance.now();
-  console.log(`time taken for featureData ${endTimefeatureData -  startTimefeatureData} millis`)
+  // const endTimefeatureData = performance.now();
+  // console.log(`time taken for featureData ${endTimefeatureData -  startTimefeatureData} millis`)
 }
 
 function _ckySetToggleForList(key, {
@@ -6367,20 +6367,20 @@ function _ckySetToggleForList(key, {
 }) {
   if(key === `ckyIABVendorSection1`){
 
-    const startTime_ckySetToggleElementChecked = performance.now();
+    // const startTime_ckySetToggleElementChecked = performance.now();
     _ckySetToggleElementChecked(`#${key}Toggle`, sectionChecked);
-    const endTime_ckySetToggleElementChecked = performance.now();
-  console.log(`time taken for _ckySetToggleElementChecked ${endTime_ckySetToggleElementChecked -  startTime_ckySetToggleElementChecked} millis`)
+    // const endTime_ckySetToggleElementChecked = performance.now();
+  // console.log(`time taken for _ckySetToggleElementChecked ${endTime_ckySetToggleElementChecked -  startTime_ckySetToggleElementChecked} millis`)
 
-  const startTimeToggleConsent = performance.now();
+  // const startTimeToggleConsent = performance.now();
     _ckySetToggleForListItem(consent, key, "ToggleConsent");
-    const endTimeToggleConsent = performance.now();
-  console.log(`time taken for ToggleConsent ${endTimeToggleConsent -  startTimeToggleConsent} millis`)
+    // const endTimeToggleConsent = performance.now();
+  // console.log(`time taken for ToggleConsent ${endTimeToggleConsent -  startTimeToggleConsent} millis`)
 
-  const startTimeToggleLegitimate = performance.now();
+  // const startTimeToggleLegitimate = performance.now();
     _ckySetToggleForListItem(legitimateInterest, key, "ToggleLegitimate");
-    const endTimeToggleLegitimate = performance.now();
-  console.log(`time taken for ToggleLegitimate ${endTimeToggleLegitimate -  startTimeToggleLegitimate} millis`)
+    // const endTimeToggleLegitimate = performance.now();
+  // console.log(`time taken for ToggleLegitimate ${endTimeToggleLegitimate -  startTimeToggleLegitimate} millis`)
   }else{
     _ckySetToggleElementChecked(`#${key}Toggle`, sectionChecked);
 
@@ -6392,11 +6392,17 @@ function _ckySetToggleForList(key, {
 }
 
 function _ckySetToggleForListItem(listGroup, key, suffix) {
+  console.log(listGroup)
   if (!listGroup) return;
-
+  const startTimelistGroupAllowed = performance.now();
   for (const item of listGroup.allowed) _ckySetToggleElementChecked(`#${key}Item${item}${suffix}`);
+  const endTimelistGroupAllowed = performance.now();
+  console.log(`time taken for listGroup.allowed ${endTimelistGroupAllowed -  startTimelistGroupAllowed} millis`)
 
+  const startTimelistGroupRejected = performance.now();
   for (const item of listGroup.rejected) _ckySetToggleElementChecked(`#${key}Item${item}${suffix}`, false);
+  const endTimelistGroupRejected = performance.now();
+  console.log(`time taken for listGroup.rejected ${endTimelistGroupRejected -  startTimelistGroupRejected} millis`)
 }
 
 function _ckySetIABTabSelectListeners() {
@@ -7220,15 +7226,15 @@ function _ckySetIABConsentState(choice = "all") {
 
     _ckySetGoogleACMState(Array.from(ref._tcModal.gvl.googleVendorIds));
   } else {
-    const startTimeTCfUnset = performance.now();
+    // const startTimeTCfUnset = performance.now();
     ref._tcModal.unsetAll();
-    const endTimeTCfUnset = performance.now();
-    console.log(`time taken for ref._tcModal.unsetAll ${startTimeTCfUnset - endTimeTCfUnset} millis`)
+    // const endTimeTCfUnset = performance.now();
+    // console.log(`time taken for ref._tcModal.unsetAll ${startTimeTCfUnset - endTimeTCfUnset} millis`)
 
-    const startTime_ckySetGoogleACMState = performance.now();
+    // const startTime_ckySetGoogleACMState = performance.now();
     _ckySetGoogleACMState([]);
-    const endTime_ckySetGoogleACMState = performance.now();
-    console.log(`time taken for _ckySetGoogleACMState ${startTime_ckySetGoogleACMState - endTime_ckySetGoogleACMState} millis`)
+    // const endTime_ckySetGoogleACMState = performance.now();
+    // console.log(`time taken for _ckySetGoogleACMState ${startTime_ckySetGoogleACMState - endTime_ckySetGoogleACMState} millis`)
 
     const {
       activeLaw
@@ -7251,15 +7257,15 @@ function _ckySetIABConsentState(choice = "all") {
     }
   }
 
-  const startTime_ckySetCookie = performance.now();
+  // const startTime_ckySetCookie = performance.now();
   ref._ckySetCookie("euconsent", `${_ckyGetTCEncodedString()},${ref._addtlConsent || ""}`, ref._ckyStore._bannerConfig.scriptExpiry);
-  const endTime_ckySetCookie = performance.now();
-  console.log(`time taken for _ckySetCookie ${startTime_ckySetCookie - endTime_ckySetCookie} millis`)
+  // const endTime_ckySetCookie = performance.now();
+  // console.log(`time taken for _ckySetCookie ${startTime_ckySetCookie - endTime_ckySetCookie} millis`)
 
-  const startTime_ckyPopulateIABSetSelections = performance.now();
+  // const startTime_ckyPopulateIABSetSelections = performance.now();
   _ckyPopulateIABSetSelections();
-  const endTime_ckyPopulateIABSetSelections = performance.now();
-  console.log(`time taken for _ckyPopulateIABSetSelections ${startTime_ckyPopulateIABSetSelections - endTime_ckyPopulateIABSetSelections} millis`)
+  // const endTime_ckyPopulateIABSetSelections = performance.now();
+  // console.log(`time taken for _ckyPopulateIABSetSelections ${startTime_ckyPopulateIABSetSelections - endTime_ckyPopulateIABSetSelections} millis`)
 }
 
 function _ckyGetIABVendorsForUI() {
