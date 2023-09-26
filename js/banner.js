@@ -6318,21 +6318,46 @@ function _ckyIABGetChoicesForSection(key, list, sectionID) {
 }
 
 function _ckyPopulateIABSetSelections() {
+
+  const startTime_ckyGetIABVendorsForUI = performance.now();
   const vendorData = _ckyGetIABVendorsForUI();
+  const endTime_ckyGetIABVendorsForUI = performance.now();
+  console.log(`time taken for _ckyGetIABVendorsForUI ${endTime_ckyGetIABVendorsForUI - startTime_ckyGetIABVendorsForUI} millis`)
 
+  const startTime_ckyGetGoogleVendorsForUI = performance.now();
   const googleVendorData = _ckyGetGoogleVendorsForUI();
+  const endTime_ckyGetGoogleVendorsForUI = performance.now();
+  console.log(`time taken for _ckyGetGoogleVendorsForUI ${endTime_ckyGetGoogleVendorsForUI -  startTime_ckyGetGoogleVendorsForUI} millis`)
 
+  const startTime_ckyGetIABPurposeForUI = performance.now();
   const purposeData = _ckyGetIABPurposeForUI();
+  const endTime_ckyGetIABPurposeForUI = performance.now();
+  console.log(`time taken for _ckyGetIABPurposeForUI ${endTime_ckyGetIABPurposeForUI -  startTime_ckyGetIABPurposeForUI} millis`)
 
+  const startTime_ckyGetIABFeaturesForUI = performance.now();
   const featureData = _ckyGetIABFeaturesForUI();
+  const endTime_ckyGetIABFeaturesForUI = performance.now();
+  console.log(`time taken for _ckyGetIABFeaturesForUI ${endTime_ckyGetIABFeaturesForUI -  startTime_ckyGetIABFeaturesForUI} millis`)
 
+  const startTimevendorData = performance.now();
   _ckySetToggleForList(`ckyIABVendorSection1`, vendorData);
+  const endTimevendorData = performance.now();
+  console.log(`time taken for vendorData ${endTimevendorData -  startTimevendorData} millis`)
 
+  const startTimegoogleVendorData = performance.now();
   _ckySetToggleForList(`ckyIABVendorSection2`, googleVendorData);
+  const endTime_googleVendorData = performance.now();
+  console.log(`time taken for googleVendorData ${endTime_googleVendorData -  startTimegoogleVendorData} millis`)
 
+  const startTimepurposeData = performance.now();
   _ckySetToggleForList(`ckyIABPNFSection1`, purposeData);
+  const endTimepurposeData = performance.now();
+  console.log(`time taken for purposeData ${endTimepurposeData -  startTimepurposeData} millis`)
 
+  const startTimefeatureData = performance.now();
   _ckySetToggleForList(`ckyIABPNFSection4`, featureData);
+  const endTimefeatureData = performance.now();
+  console.log(`time taken for featureData ${endTimefeatureData -  startTimefeatureData} millis`)
 }
 
 function _ckySetToggleForList(key, {
