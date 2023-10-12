@@ -38,10 +38,13 @@
             if (cookieObj.analytics === "no") {
               console.log("initial addPlaceHolder()");
               addPlaceholder();
+            }else{
+                console.log("initial addPlaceHolder() didnt work");
             }
             document.addEventListener(
               "cookieyes_consent_update",
               function (eventData) {
+                console.log("consent update",eventData.detail);
                 const data = eventData.detail;
                 if (data.rejected.includes("analytics")) {
                   console.log("banner interaction decline");
