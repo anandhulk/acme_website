@@ -1,148 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <!-- <script>
         window.iabConfig = {
             allowedVendors: [1,8,27,53 ],
             allowedGoogleVendors: [89,149,108]
         }
     </script> -->
-<!-- <script id="cookieyes" type="text/javascript" src="./js/script.js"></script>  -->
-<script id="cookieyes" type="text/javascript" src="https://scriptstaging.cookieyes.com/client_data/3a8196c3494857295a4ab43b/script.js"></script>
-<script>
-    function waitForElm(selector) {
-  return new Promise((resolve) => {
-    if (document.querySelector(selector)) {
-      return resolve(document.querySelector(selector));
-    }
+    <!-- <script id="cookieyes" type="text/javascript" src="./js/script.js"></script>  -->
+    <script
+      id="cookieyes"
+      type="text/javascript"
+      src="https://scriptstaging.cookieyes.com/client_data/3a8196c3494857295a4ab43b/script.js"
+    ></script>
+    <script>
+      var checktimeout = 0;
+      window.addEventListener("load", function () {
+        waitForElement(".cky-consent-container", function () {
+          let cookies = document.cookie
+            .split(";")
+            .reduce(
+              (ac, cv, i) =>
+                Object.assign(ac, { [cv.split("=")[0]]: cv.split("=")[1] }),
+              {}
+            );
+          const cookieYesConsent = cookies["cookieyes-consent"];
+          const adsConsent = false;
+          if (cookieYesConsent) {
+            const cookiePairs = cookieYesConsent
+              .split(",")
+              .map((pair) => pair.trim());
+            const cookieObj = {};
+            for (const element of cookiePairs) {
+              const cur = element.split(":");
+              cookieObj[cur[0]] = cur[1];
+            }
+            if (cookieObj.analytics === "no") {
+              console.log("initial addPlaceHolder()");
+              addPlaceholder();
+            }
+            document.addEventListener(
+              "cookieyes_consent_update",
+              function (eventData) {
+                const data = eventData.detail;
+                if (data.rejected.includes("analytics")) {
+                  console.log("banner interaction decline");
+                  addPlaceholder();
+                } else {
+                  console.log(adsConsent, "while replaced");
+                  removePlaceholder();
+                }
+              }
+            );
+          }
+          function addPlaceholder() {
+            const divElement = document.createElement("div");
+            divElement.setAttribute("class", "video-placeholder-youtube");
+            divElement.setAttribute("data-cky-tag", "video-placeholder");
+            //add the corresponding height and background-image for the video they want to place the placeholder
+            divElement.setAttribute(
+              "style",
+              "height: 488px; background-image: url(https://cdn-cookieyes.com/assets/images/cky-placeholder.svg); background-size: 80px; background-position: center; background-repeat: no-repeat; background-color: #b2b0b059; display: flex; align-items: flex-end;"
+            );
+            const paragraph = document.createElement("p");
+            paragraph.setAttribute("class", "video-placeholder-text-youtube");
+            paragraph.setAttribute("data-cky-tag", "placeholder-title");
+            paragraph.setAttribute(
+              "style",
+              "display: block; border-color: rgb(0, 0, 0); background-color: rgb(0, 0, 0); color: rgb(255, 255, 255);"
+            );
+            paragraph.textContent =
+              "Please accept cookies to access this content";
+            divElement.appendChild(paragraph);
 
-    const observer = new MutationObserver((mutations) => {
-      if (document.querySelector(selector)) {
-        observer.disconnect();
-        resolve(document.querySelector(selector));
+            const elements = document.querySelectorAll(".tab-pane");
+
+            elements.forEach(function (element) {
+              const embedResponsiveElement =
+                element.querySelector(".embed-responsive");
+              if (embedResponsiveElement) {
+                embedResponsiveElement.appendChild(divElement.cloneNode(true));
+              }
+            });
+          }
+          function removePlaceholder() {
+            const elements = document.querySelectorAll(".tab-pane");
+
+            elements.forEach(function (element) {
+              const embedResponsive =
+                element.querySelector(".embed-responsive");
+
+              if (embedResponsive) {
+                const divElementToRemove = embedResponsive.querySelector(
+                  ".video-placeholder-youtube"
+                );
+
+                if (divElementToRemove) {
+                  embedResponsive.removeChild(divElementToRemove);
+                }
+              }
+            });
+          }
+        });
+      });
+      function waitForElement(selector, callback) {
+        var element = document.querySelector(selector);
+        if (element) return callback();
+        checktimeout++;
+        if (checktimeout < 120) {
+          setTimeout(function () {
+            waitForElement(selector, callback);
+          }, 500);
+        }
       }
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-    });
-  });
-}
-
-function addPlaceholder() {
-  const divElement = document.createElement("div");
-  divElement.setAttribute("class", "video-placeholder-youtube");
-  divElement.setAttribute("data-cky-tag", "video-placeholder");
-  //add the corresponding height and background-image for the video they want to place the placeholder
-  divElement.setAttribute(
-    "style",
-    "height: 488px; background-image: url(https://cdn-cookieyes.com/assets/images/cky-placeholder.svg); background-size: 80px; background-position: center; background-repeat: no-repeat; background-color: #b2b0b059; display: flex; align-items: flex-end;"
-  );
-  const paragraph = document.createElement("p");
-  paragraph.setAttribute("class", "video-placeholder-text-youtube");
-  paragraph.setAttribute("data-cky-tag", "placeholder-title");
-  paragraph.setAttribute(
-    "style",
-    "display: block; border-color: rgb(0, 0, 0); background-color: rgb(0, 0, 0); color: rgb(255, 255, 255);"
-  );
-  paragraph.textContent = "Please accept cookies to access this content";
-  divElement.appendChild(paragraph);
-
-  const elements = document.querySelectorAll(".tab-pane");
-
-  elements.forEach(function (element) {
-    const embedResponsiveElement = element.querySelector(".embed-responsive");
-    if (embedResponsiveElement) {
-      embedResponsiveElement.appendChild(divElement.cloneNode(true));
-    }
-  });
-}
-function removePlaceholder() {
-  const elements = document.querySelectorAll(".tab-pane");
-
-  elements.forEach(function (element) {
-    const embedResponsive = element.querySelector(".embed-responsive");
-
-    if (embedResponsive) {
-      const divElementToRemove = embedResponsive.querySelector(
-        ".video-placeholder-youtube"
-      );
-
-      if (divElementToRemove) {
-        embedResponsive.removeChild(divElementToRemove);
-      }
-    }
-  });
-}
-
-async function run() {
-  await waitForElm("cky-consent-container");
-  let cookies = document.cookie
-    .split(";")
-    .reduce(
-      (ac, cv, i) =>
-        Object.assign(ac, { [cv.split("=")[0]]: cv.split("=")[1] }),
-      {}
-    );
-  const cookieYesConsent = cookies["cookieyes-consent"];
-  const adsConsent = false;
-  if (cookieYesConsent) {
-    const cookiePairs = cookieYesConsent.split(",").map((pair) => pair.trim());
-    const cookieObj = {};
-    for (const element of cookiePairs) {
-      const cur = element.split(":");
-      cookieObj[cur[0]] = cur[1];
-    }
-    if (cookieObj.analytics === "no") {
-      console.log("initial addPlaceholder()");
-      addPlaceholder();
-    }
-    document.addEventListener("cookieyes_consent_update", function (eventData) {
-      const data = eventData.detail;
-      if (data.rejected.includes("analytics")) {
-        console.log("banner interaction decline");
-        addPlaceholder();
-      } else {
-        console.log(adsConsent, "while replaced");
-        removePlaceholder();
-      }
-    });
-  }
-}
-
-run()
-.then(()=>{
-    console.log("successfully run");
-})
-.catch((err)=>{
-    console.log(err);
-});
-</script>
+    </script>
     <!-- Google Tag Manager -->
-<!--     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    <!--     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PJCJGM7F');</script> -->
     <!-- End Google Tag Manager -->
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Google Tag Manager (noscript) -->
-<!--     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJCJGM7F"
+    <!--     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJCJGM7F"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
     <!-- End Google Tag Manager (noscript) -->
 
     <div class="banner">
-        <div class="announcment">
-            <button class="items btn">Announcment</button>
-            <div class="items">How we are responding to COVID-19</div>
-        </div>
+      <div class="announcment">
+        <button class="items btn">Announcment</button>
+        <div class="items">How we are responding to COVID-19</div>
+      </div>
     </div>
     <a href="https://raven.github.io/test.html">Rtag</a>
     <a href="https://kanandhulk.github.io/test.html">Atag</a>
@@ -151,175 +146,212 @@ run()
     <a href="https://.github.io/test.html">github</a>
     <a href="https://ndhulk.github.io/test.html">github</a>
     <header>
-        <img src="assets/acme-logo.svg" class="logo">
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="#">Donate</a></li>
-                <li><a href="support.html">Contact</a></li>
-                <li>
-                    <button class="cart" onclick="openCart()">
-                        <div class="cart-count"><p id="cartCount">0</p></div>
-                        <img src="assets/cart.svg">
-                    </button>
-                </li>
-            </ul>
-        </nav>
+      <img src="assets/acme-logo.svg" class="logo" />
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="#">Donate</a></li>
+          <li><a href="support.html">Contact</a></li>
+          <li>
+            <button class="cart" onclick="openCart()">
+              <div class="cart-count"><p id="cartCount">0</p></div>
+              <img src="assets/cart.svg" />
+            </button>
+          </li>
+        </ul>
+      </nav>
     </header>
 
-
     <div class="image-banner">
-        <img src="assets/header.jpg" class="head-image">
-        <div class="image-overlay"></div>
-        <div class="image-description">
-            <h1>Serving you <br> since 1989.</h1>
-            <p>Acme Outdoors is an outdoor and adventure<br>shop located in the Boathouse District in<br>Oklahoma City</p>
-            <button class="transparent-button" onclick="window.location.href='shop.html'">Shop Merch</button>
-        </div>
+      <img src="assets/header.jpg" class="head-image" />
+      <div class="image-overlay"></div>
+      <div class="image-description">
+        <h1>
+          Serving you <br />
+          since 1989.
+        </h1>
+        <p>
+          Acme Outdoors is an outdoor and adventure<br />shop located in the
+          Boathouse District in<br />Oklahoma City
+        </p>
+        <button
+          class="transparent-button"
+          onclick="window.location.href='shop.html'"
+        >
+          Shop Merch
+        </button>
+      </div>
     </div>
-
 
     <div class="container-1">
-        <div class="item-1">
-            <p>WAYS TO SUPPORT</p>
-            <h1>Support Acme Outdoors.</h1>
-        </div>
-        <div class="item-2">
-            <p>COVID-19 has forced us to close our retail space, but we need<br>support from patrons like yourself now more than ever. Below, we've<br>listed the best ways to help us through this session</p>
-        </div>
+      <div class="item-1">
+        <p>WAYS TO SUPPORT</p>
+        <h1>Support Acme Outdoors.</h1>
+      </div>
+      <div class="item-2">
+        <p>
+          COVID-19 has forced us to close our retail space, but we need<br />support
+          from patrons like yourself now more than ever. Below, we've<br />listed
+          the best ways to help us through this session
+        </p>
+      </div>
     </div>
-
 
     <div class="container-2">
-        <div class="box-1 boxes">
-            <a href="#">
-                <div class="blackbox">
-                    <h1 class="number">01</h1>
-                    <h1 class="centre-text">SHOP<br>PRODUCTS</h1>
-                    <img src="assets/circle.svg">
-                </div> 
-            </a>
-            <p>Our full product line is still available online<br>here on our site! Getting outside and hiking is<br>still something you can do. Get your gear<br>
-            now!</p>
-        </div>
-        <div class="box-2 boxes">
-            <a href="#">
-                <div class="blackbox">
-                    <h1 class="number">02</h1>
-                    <h1 class="centre-text">DONATE</h1>
-                    <img class="triangle-svg" src="assets/triangle.svg">
-                </div>
-            </a>
-            <p>Since we've changed the way we opreate to<br> online only, and to ensure your safety, not all <br>our staff is working. Donate to keep them <br>afloat</p>
-        </div>
-        <div class="box-3 boxes">
-            <a href="#">
-                <div class="blackbox">
-                    <h1 class="number">02</h1>
-                    <h1 class="centre-text">BUY<br>GIFT CARDS</h1>
-                    <img src="assets/rectangle.svg">
-                </div>
-            </a>
-            <p>Have all the outdoor gear you need for<br> now? Buy a gift card and use it later or share<br> it with friends and family</p>
-        </div>
+      <div class="box-1 boxes">
+        <a href="#">
+          <div class="blackbox">
+            <h1 class="number">01</h1>
+            <h1 class="centre-text">SHOP<br />PRODUCTS</h1>
+            <img src="assets/circle.svg" />
+          </div>
+        </a>
+        <p>
+          Our full product line is still available online<br />here on our site!
+          Getting outside and hiking is<br />still something you can do. Get
+          your gear<br />
+          now!
+        </p>
+      </div>
+      <div class="box-2 boxes">
+        <a href="#">
+          <div class="blackbox">
+            <h1 class="number">02</h1>
+            <h1 class="centre-text">DONATE</h1>
+            <img class="triangle-svg" src="assets/triangle.svg" />
+          </div>
+        </a>
+        <p>
+          Since we've changed the way we opreate to<br />
+          online only, and to ensure your safety, not all <br />our staff is
+          working. Donate to keep them <br />afloat
+        </p>
+      </div>
+      <div class="box-3 boxes">
+        <a href="#">
+          <div class="blackbox">
+            <h1 class="number">02</h1>
+            <h1 class="centre-text">BUY<br />GIFT CARDS</h1>
+            <img src="assets/rectangle.svg" />
+          </div>
+        </a>
+        <p>
+          Have all the outdoor gear you need for<br />
+          now? Buy a gift card and use it later or share<br />
+          it with friends and family
+        </p>
+      </div>
     </div>
-
 
     <div class="image-banner-2">
-        <img src="assets/second-section.jpg">
-        <div class="image-overlay"></div>
-        <div class="banner-description-2">
-            <h1>How we're keeping you<br>safe during COVID-19</h1>
-            <p>As an outdoor shop, we've taken precautionary<br>measures to ensure the safety of all our<br>customers and team members.</p>
-            <button class="white-button">Read our statement</button>
-        </div>
+      <img src="assets/second-section.jpg" />
+      <div class="image-overlay"></div>
+      <div class="banner-description-2">
+        <h1>How we're keeping you<br />safe during COVID-19</h1>
+        <p>
+          As an outdoor shop, we've taken precautionary<br />measures to ensure
+          the safety of all our<br />customers and team members.
+        </p>
+        <button class="white-button">Read our statement</button>
+      </div>
     </div>
-
 
     <div class="white-para">
-        <p>SHOP PRODUCTS</p>
-        <h1>Open 24/ 7/ 365</h1>
+      <p>SHOP PRODUCTS</p>
+      <h1>Open 24/ 7/ 365</h1>
     </div>
 
-
     <div class="products-container">
-        <div class="product-1 products">
-                <a href="#" class="product-image">
-                    <img src="assets/product-1.jpg">
-                </a>
-                <p class="product-name">White Tent</p>
-                <p class="product-price">$ 200.00 USD</p>
-                <button onclick="redirect('tent',200)">Details</button>
-        </div>
-        <div class="product-2 products">
-                <a href="#" class="product-image">
-                    <img src="assets/product-2.jpg">
-                </a>
-                <p class="product-name">Tin Coffe Tumbler</p>
-                <p class="product-price">$ 35.00 USD</p>
-                <button onclick="redirect('mug',35)">Details</button>
-        </div>
-        <div class="product-3 products">
-                <a class="product-image" href="#">
-                    <img src="assets/product-3.jpg">
-                    <div class="sale-tag"><P>SALE</P></div>
-                </a>
-                <p class="product-name">Blue Canvas Pack</p>
-                <p class="product-price">$ 95.00 USD<span>$ 145.00 USD</span></p>
-                <button onclick="redirect('bluepack',95)">Details</button>
-        </div>
+      <div class="product-1 products">
+        <a href="#" class="product-image">
+          <img src="assets/product-1.jpg" />
+        </a>
+        <p class="product-name">White Tent</p>
+        <p class="product-price">$ 200.00 USD</p>
+        <button onclick="redirect('tent',200)">Details</button>
+      </div>
+      <div class="product-2 products">
+        <a href="#" class="product-image">
+          <img src="assets/product-2.jpg" />
+        </a>
+        <p class="product-name">Tin Coffe Tumbler</p>
+        <p class="product-price">$ 35.00 USD</p>
+        <button onclick="redirect('mug',35)">Details</button>
+      </div>
+      <div class="product-3 products">
+        <a class="product-image" href="#">
+          <img src="assets/product-3.jpg" />
+          <div class="sale-tag"><p>SALE</p></div>
+        </a>
+        <p class="product-name">Blue Canvas Pack</p>
+        <p class="product-price">$ 95.00 USD<span>$ 145.00 USD</span></p>
+        <button onclick="redirect('bluepack',95)">Details</button>
+      </div>
     </div>
 
     <div class="view-all">
-        <button>View All Products</button>
+      <button>View All Products</button>
     </div>
 
     <div class="container-3">
-        <div class="text-block">
-            <h1>Shop Local.</h1>
-            <p>We know that during COVID-19, a lot of folks<br>around the city and state are feeling uneasy about<br>the future - we're not sure what the future holds<br> either.</p>
-            <p>That said: we know that we love making sure you<br>have the gear you need for your adventures, and <br>we're going to keep doing that - with our team - <br> until the city tells us we can't.</p>
-            <p>But as long as folks like yourself support small <br>buisness around the city, then we'll be here -- <br>everyday, making sure your orders arrive on time. <br>---------</p>
-            <p>Jane & John Doe<br>Acme Outdoors</p>
-        </div>
-        <img src="assets/profile.jpg" alt="">
+      <div class="text-block">
+        <h1>Shop Local.</h1>
+        <p>
+          We know that during COVID-19, a lot of folks<br />around the city and
+          state are feeling uneasy about<br />the future - we're not sure what
+          the future holds<br />
+          either.
+        </p>
+        <p>
+          That said: we know that we love making sure you<br />have the gear you
+          need for your adventures, and <br />we're going to keep doing that -
+          with our team - <br />
+          until the city tells us we can't.
+        </p>
+        <p>
+          But as long as folks like yourself support small <br />buisness around
+          the city, then we'll be here -- <br />everyday, making sure your
+          orders arrive on time. <br />---------
+        </p>
+        <p>Jane & John Doe<br />Acme Outdoors</p>
+      </div>
+      <img src="assets/profile.jpg" alt="" />
     </div>
     <div id="shoppingCart" class="hidden">
+      <div class="cart-header">
+        <p>Your Cart</p>
+        <button id="cartExit" onclick="exitCart()">x</button>
+      </div>
+      <hr />
 
-        <div class="cart-header">
-            <p> Your Cart</p>
-            <button id="cartExit" onclick="exitCart()">x</button>
-        </div>
-        <hr>
+      <div class="cart-products">
+        <ul id="cartList"></ul>
+      </div>
 
-        <div class="cart-products">
-            <ul id="cartList">
-            </ul>
-        </div>
-
-        <hr>
-        <div class="cart-checkout">
-            <p>Subtotal</p>
-            <p class="price" id="total"></p>
-        </div>
-        <button class="checkout-button">Continue to checkout</button>
-
+      <hr />
+      <div class="cart-checkout">
+        <p>Subtotal</p>
+        <p class="price" id="total"></p>
+      </div>
+      <button class="checkout-button">Continue to checkout</button>
     </div>
 
     <div id="overlay" class="overlay hidden"></div>
     <footer>
-        <img class="footer-logo" src="assets/acme-logo.svg">
-        <div>
-            <a href="#"><img src="assets/twitter.svg"></a>
-            <a href="#"><img src="assets/facebook.svg"></a>
-            <a href="#"><img src="assets/instagram.svg"></a>
-        </div>
-        <a href='javascript:void(0)' onclick='revisitCkyConsent()'>Do Not Sell or Share My Personal Information</a>
+      <img class="footer-logo" src="assets/acme-logo.svg" />
+      <div>
+        <a href="#"><img src="assets/twitter.svg" /></a>
+        <a href="#"><img src="assets/facebook.svg" /></a>
+        <a href="#"><img src="assets/instagram.svg" /></a>
+      </div>
+      <a href="javascript:void(0)" onclick="revisitCkyConsent()"
+        >Do Not Sell or Share My Personal Information</a
+      >
     </footer>
 
     <script src="js/loadCart.js"></script>
     <script src="js/dynamic.js"></script>
-</body>
+  </body>
 </html>
