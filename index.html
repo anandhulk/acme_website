@@ -16,98 +16,10 @@
     <script>
       var checktimeout = 0;
       window.addEventListener("load", function () {
-        waitForElement(".cky-consent-container", function () {
-          let cookies = document.cookie
-            .split(";")
-            .reduce(
-              (ac, cv, i) =>
-                Object.assign(ac, { [cv.split("=")[0]]: cv.split("=")[1] }),
-              {}
-            );
-          const cookieYesConsent = cookies["cookieyes-consent"];
-          const adsConsent = false;
-          if (cookieYesConsent) {
-            const cookiePairs = cookieYesConsent
-              .split(",")
-              .map((pair) => pair.trim());
-            const cookieObj = {};
-            for (const element of cookiePairs) {
-              const cur = element.split(":");
-              cookieObj[cur[0]] = cur[1];
-            }
-            if (cookieObj.analytics === "no") {
-              console.log("initial addPlaceHolder()");
-              addPlaceholder();
-            }else{
-                console.log("initial addPlaceHolder() didnt work");
-            }
-            document.addEventListener(
-              "cookieyes_consent_update",
-              function (eventData) {
-                console.log("consent update",eventData.detail);
-                const data = eventData.detail;
-                if (data.rejected.includes("analytics")) {
-                  console.log("banner interaction decline");
-                  addPlaceholder();
-                } else {
-                  console.log(adsConsent, "while replaced");
-                  removePlaceholder();
-                }
-              }
-            );
-          }
-          function addPlaceholder() {
-            const divElement = document.createElement("div");
-            divElement.setAttribute("class", "video-placeholder-youtube");
-            divElement.setAttribute("data-cky-tag", "video-placeholder");
-            //add the corresponding height and background-image for the video they want to place the placeholder
-            divElement.setAttribute(
-              "style",
-              "height: 488px; background-image: url(https://cdn-cookieyes.com/assets/images/cky-placeholder.svg); background-size: 80px; background-position: center; background-repeat: no-repeat; background-color: #b2b0b059; display: flex; align-items: flex-end;"
-            );
-            const paragraph = document.createElement("p");
-            paragraph.setAttribute("class", "video-placeholder-text-youtube");
-            paragraph.setAttribute("data-cky-tag", "placeholder-title");
-            paragraph.setAttribute(
-              "style",
-              "display: block; border-color: rgb(0, 0, 0); background-color: rgb(0, 0, 0); color: rgb(255, 255, 255);"
-            );
-            paragraph.textContent =
-              "Please accept cookies to access this content";
-            divElement.appendChild(paragraph);
-
-            const elements = document.querySelectorAll(".tab-pane");
-
-            elements.forEach(function (element) {
-              const embedResponsiveElement =
-                element.querySelector(".embed-responsive");
-              if (embedResponsiveElement) {
-                embedResponsiveElement.appendChild(divElement.cloneNode(true));
-              }
-            });
-          }
-          function removePlaceholder() {
-            const elements = document.querySelectorAll(".tab-pane");
-
-            elements.forEach(function (element) {
-              const embedResponsive =
-                element.querySelector(".embed-responsive");
-
-              if (embedResponsive) {
-                const divElementToRemove = embedResponsive.querySelector(
-                  ".video-placeholder-youtube"
-                );
-
-                if (divElementToRemove) {
-                  embedResponsive.removeChild(divElementToRemove);
-                }
-              }
-            });
-          }
-        });
+        waitForElement(".cky-notice", handleCustomeizeBtn);
       });
       function waitForElement(selector, callback) {
-        var element = document.querySelector(selector);
+        const element = document.querySelector(selector);
         if (element) return callback();
         checktimeout++;
         if (checktimeout < 120) {
@@ -115,6 +27,27 @@
             waitForElement(selector, callback);
           }, 500);
         }
+      }
+      function handleCustomeizeBtn() {
+        const ckyTitle = document.querySelector(".cky-notice-des");
+        if (ckyTitle) {
+          const button = document.querySelector(".cky-btn-customize");
+          const ckyCustomizeBtn = button.cloneNode(true);
+          button.replaceWith(button.cloneNode(true));
+          ckyCustomizeBtn.setAttribute(
+            "style",
+            "border: unset;text-decoration: none;background-color :transparent;color:#595959;font-weight:800;padding: unset;display:block;"
+          );
+          ckyCustomizeBtn.setAttribute("onclick", "previewCustomize()");
+
+          ckyTitle.appendChild(ckyCustomizeBtn);
+        }
+      }
+      function previewCustomize() {
+        document
+          .querySelector(".cky-consent-container")
+          .classList.add("cky-hide");
+        document.querySelector(".cky-modal").classList.add("cky-modal-open");
       }
     </script>
     <!-- Google Tag Manager -->
