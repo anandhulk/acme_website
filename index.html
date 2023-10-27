@@ -29,6 +29,10 @@
     <script>
       document.addEventListener("DOMContentLoaded",()=>{
           console.log("calling");
+          while(typeof window.revisitCkyConsent !== "function"){
+            console.log("looping");
+          }
+          console.log("loop jumped");
           window.revisitCkyConsent();
       });
     </script>
