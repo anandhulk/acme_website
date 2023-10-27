@@ -27,9 +27,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <script>
-      document.addEventListener("DOMContentLoaded",()=>{
-        console.log("dom loaded");
-        revisitCkyConsent();
+      document.addEventListener("loadeddata",()=>{
+        setTimeout(()=>{
+                    console.log("calling");
+                    window.revisitCkyConsent();
+        },2000);
       });
     </script>
   </head>
