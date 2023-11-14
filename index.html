@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!--QA-3--> 
+    <script id="cookieyes" type="text/javascript" src="https://scriptstaging.cookieyes.com/client_data/3a8196c3494857295a4ab43b/script.js"></script>
     <!-- <script>
         window.iabConfig = {
             allowedVendors: [1,8,27,53 ],
@@ -13,7 +15,6 @@
       type="text/javascript"
       src="https://scriptstaging.cookieyes.com/client_data/3a8196c3494857295a4ab43b/script.js"
     ></script> -->
-    <script id="cookieyes" type="text/javascript" src="https://scriptstaging.cookieyes.com/client_data/3a8196c3494857295a4ab43b/script.js"></script>
     <!-- Google Tag Manager -->
     <!--     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -21,6 +22,47 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PJCJGM7F');</script> -->
     <!-- End Google Tag Manager -->
+    <script>
+      function parseCookieYesCookie(){
+  let cookies = document.cookie
+  .split(";")
+  .reduce(
+    (ac, cv, i) => Object.assign(ac, { [cv.split("=")[0].trim()]: cv.split("=")[1] }),
+    {}
+  );
+  const cookieYesConsent = cookies["cookieyes-consent"];
+  const cookiePairs = cookieYesConsent.split(",").map((pair) => pair.trim());
+  const cookieObj = {};
+  cookiePairs.forEach((pair) => {
+    const [key, value] = pair.split(":");
+    cookieObj[key] = value;
+  });
+  return cookieObj;
+}
+
+function waitForElement(selector, callback) {
+  console.log("in wait");
+  const element = document.querySelector(selector);
+  if (element) return callback();
+  checktimeout++;
+  if (checktimeout < 120) {
+    setTimeout(function () {
+      waitForElement(selector, callback);
+    }, 500);
+  }
+}
+
+waitForElement("cky-consent-container",()=>{
+  const cookieYesConsent = parseCookieYesCookie();
+  console.log(cookieYesConsent);
+  if( cookieYesConsent.advertisement === "yes" && cookieYesConsent.analytics === "yes"
+     && cookieYesConsent.functional === "yes" && cookieYesConsent.performance === "yes"){
+      console.log("worked");
+      // document.querySelector("#shopify-section-template--15991066329282__main > div > h1")
+      //   .insertAdjacentHTML("afterend","<div>This is a placeholder text</div>");
+    }
+})
+    </script>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
