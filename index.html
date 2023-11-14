@@ -44,6 +44,7 @@ function parseCookieYesCookie(){
 function waitForElement(selector, callback) {
   console.log("in wait");
   const element = document.querySelector(selector);
+  console.log(element);
   if (element) return callback();
   checktimeout++;
   if (checktimeout < 120) {
@@ -53,7 +54,7 @@ function waitForElement(selector, callback) {
   }
 }
 
-waitForElement("cky-consent-container",()=>{
+waitForElement(".cky-consent-container",()=>{
   const cookieYesConsent = parseCookieYesCookie();
   console.log(cookieYesConsent);
   if( cookieYesConsent.advertisement === "yes" && cookieYesConsent.analytics === "yes"
