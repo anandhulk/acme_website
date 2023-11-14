@@ -55,10 +55,9 @@ function waitForElement(selector, callback) {
 }
 
 waitForElement(".cky-consent-container",()=>{
-  const cookieYesConsent = parseCookieYesCookie();
+  const {advertisement, analytics, functional, performance} = parseCookieYesCookie();
   console.log(cookieYesConsent);
-  if( cookieYesConsent.advertisement === "yes" && cookieYesConsent.analytics === "yes"
-     && cookieYesConsent.functional === "yes" && cookieYesConsent.performance === "yes"){
+  if( advertisement === "no" || analytics === "no" || functional === "no" || performance === "no"){
       console.log("worked");
       // document.querySelector("#shopify-section-template--15991066329282__main > div > h1")
       //   .insertAdjacentHTML("afterend","<div>This is a placeholder text</div>");
