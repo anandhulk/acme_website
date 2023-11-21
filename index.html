@@ -24,43 +24,7 @@
     })(window,document,'script','dataLayer','GTM-PJCJGM7F');</script> -->
     <!-- End Google Tag Manager -->
     <script>
-let checktimeout = 0;
-function parseCookieYesCookie(){
-  let cookies = document.cookie
-  .split(";")
-  .reduce(
-    (ac, cv, i) => Object.assign(ac, { [cv.split("=")[0].trim()]: cv.split("=")[1] }),
-    {}
-  );
-  const cookieYesConsent = cookies["cookieyes-consent"];
-  const cookiePairs = cookieYesConsent.split(",").map((pair) => pair.trim());
-  const cookieObj = {};
-  cookiePairs.forEach((pair) => {
-    const [key, value] = pair.split(":");
-    cookieObj[key] = value;
-  });
-  return cookieObj;
-}
-
-function waitForElement(selector, callback) {
-  const element = document.querySelector(selector);
-  console.log(element);
-  if (element) return callback();
-  checktimeout++;
-  if (checktimeout < 120) {
-    setTimeout(function () {
-      waitForElement(selector, callback);
-    }, 500);
-  }
-}
-
-waitForElement(".cky-consent-container",()=>{
-  const {advertisement, analytics, functional, performance} = parseCookieYesCookie();
-  if( advertisement === "no" || analytics === "no" || functional === "no" || performance === "no"){
-      // document.querySelector("#shopify-section-template--15991066329282__main > div > h1")
-      //   .insertAdjacentHTML("afterend","<div>This is a placeholder text</div>");
-    }
-})
+      sessionStorage.setItem('sessionCookie', 'test');
     </script>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
