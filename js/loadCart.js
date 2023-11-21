@@ -13,7 +13,7 @@ document.cookie = "functionalDummy2=John Doe; expires=Thu, 18 Dec 2024 12:00:00 
 document.cookie = "AnalyticsDummy2=John Doe; expires=Thu, 18 Dec 2024 12:00:00 UTC";
 document.cookie = "perfomanceDummy2=John Doe; expires=Thu, 18 Dec 2024 12:00:00 UTC";
 document.cookie = "AdvertisementDummy2=John Doe; expires=Thu, 18 Dec 2024 12:00:00 UTC";
-document.cookie = "username=time_test; expires=Tue, 07 Nov 2023 11:45:00 UTC"
+// document.cookie = "username=time_test; expires=Tue, 07 Nov 2023 11:45:00 UTC"
 
 let currentCart=localStorage.getItem("cart")
 currentCart=JSON.parse(currentCart)
