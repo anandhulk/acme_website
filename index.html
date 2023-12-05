@@ -84,7 +84,6 @@
           document.querySelector("body > div.cky-modal.cky-modal-open > div > div.cky-preference-header > button").addEventListener("click",(event)=>{
               modelOpen = false;
               window.dispatchEvent(globalEventClose);
-              console.log("model closed");
               initial = false;
           });
         }
@@ -110,9 +109,7 @@
           }
         }
         window.addEventListener("load", function () {
-          console.log("load event")
           waitForElement(".cky-consent-container", function () {
-            console.log("after waiting")
             document
               .querySelector(
                 "body > div.cky-consent-container.cky-banner-bottom > div > div > div > div.cky-notice-btn-wrapper > button.cky-btn.cky-btn-customize"
@@ -120,14 +117,12 @@
               .addEventListener("click", (event) => {
                 modelOpen = true;
                 window.dispatchEvent(globalEventOpen);
-                console.log("model open");
               });
             document.addEventListener(
               "cookieyes_consent_update",
               function (eventData) {
                 if (modelOpen) {
                   window.dispatchEvent(globalEventClose);
-                  console.log("model closed");
                 }
               }
             );
