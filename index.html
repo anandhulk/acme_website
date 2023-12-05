@@ -74,11 +74,20 @@
       function check() {
         let modelOpen = false;
         var checktimeout = 0;
+        var initial = true;
         window.addEventListener("cookieyes_modal_close", function () {
           console.log("closing event");
         });
         window.addEventListener("cookieyes_modal_open", function () {
           console.log("opening event");
+          if(initial){
+          document.querySelector("body > div.cky-modal.cky-modal-open > div > div.cky-preference-header > button").addEventListener("click",(event)=>{
+              modelOpen = false;
+              window.dispatchEvent(globalEventClose);
+              console.log("model closed");
+              initial = false;
+          });
+        }
         });
         const globalEventClose = new CustomEvent("cookieyes_modal_close", {
           detail: {
