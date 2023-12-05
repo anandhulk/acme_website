@@ -52,7 +52,7 @@
       type="text/javascript"
       src="https://cdn-cookieyes.com/client_data/e2c7b1cdcf97e27cf69b41e8/script.js"
     ></script>
-    
+
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -71,7 +71,61 @@
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <script>
-      sessionStorage.setItem("yt-remote-device-id", "test");
+      function check() {
+        let modelOpen = false;
+        var checktimeout = 0;
+        window.addEventListener("cookieyes_modal_close", function () {
+          console.log("closing event");
+        });
+        window.addEventListener("cookieyes_modal_open", function () {
+          console.log("opening event");
+        });
+        const globalEventClose = new CustomEvent("cookieyes_modal_close", {
+          detail: {
+            message: "cookieyes modal closed",
+          },
+        });
+        const globalEventOpen = new CustomEvent("cookieyes_modal_open", {
+          detail: {
+            message: "cookieyes modal opened",
+          },
+        });
+        function waitForElement(selector, callback) {
+          const element = document.querySelector(selector);
+          if (element) return callback();
+          checktimeout++;
+          if (checktimeout < 120) {
+            setTimeout(function () {
+              waitForElement(selector, callback);
+            }, 500);
+          }
+        }
+        window.addEventListener("load", function () {
+          console.log("load event")
+          waitForElement(".cky-consent-container", function () {
+            console.log("after waiting")
+            document
+              .querySelector(
+                "body > div.cky-consent-container.cky-banner-bottom > div > div > div > div.cky-notice-btn-wrapper > button.cky-btn.cky-btn-customize"
+              )
+              .addEventListener("click", (event) => {
+                modelOpen = true;
+                window.dispatchEvent(globalEventOpen);
+                console.log("model open");
+              });
+            document.addEventListener(
+              "cookieyes_consent_update",
+              function (eventData) {
+                if (modelOpen) {
+                  window.dispatchEvent(globalEventClose);
+                  console.log("model closed");
+                }
+              }
+            );
+          });
+        });
+      }
+      check();
     </script>
     <div class="banner">
       <div class="announcment">
