@@ -94,7 +94,9 @@
               childList: false,
               subtree: false,
             };
-            mutationObserver.observe(targetElement, observerConfig);
+            if(!window.cookieyesObserver){
+              window.cookieyesObserver = mutationObserver.observe(targetElement, observerConfig);
+            }
           });
         });
       }
