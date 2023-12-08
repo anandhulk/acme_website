@@ -71,10 +71,10 @@
                     )
                   ) {
                     console.log("model opened");
-                    window.dispatchEvent("cookieyes_modal_open");
+                    window.dispatchEvent(globalEventOpen);
                   } else {
                     console.log("model closed");
-                    window.dispatchEvent("cookieyes_modal_close");
+                    window.dispatchEvent(globalEventClose);
                   }
                 }
               });
