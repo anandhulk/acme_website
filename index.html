@@ -8,9 +8,13 @@
         }
     </script> -->
 
-    
-
-    <!-- Start cookieyes banner --> <script id="cookieyes" type="text/javascript" src="https://scriptstaging.cookieyes.com/client_data/eb272f8d131da543a6aff1a0/script.js"></script> <!-- End cookieyes banner -->
+    <!-- Start cookieyes banner -->
+    <script
+      id="cookieyes"
+      type="text/javascript"
+      src="https://scriptstaging.cookieyes.com/client_data/eb272f8d131da543a6aff1a0/script.js"
+    ></script>
+    <!-- End cookieyes banner -->
 
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
@@ -31,22 +35,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <script>
       function check() {
-        let modelOpen = false;
         var checktimeout = 0;
-        var initial = true;
-        window.addEventListener("cookieyes_modal_close", function () {
-          console.log("closing event");
-        });
-        window.addEventListener("cookieyes_modal_open", function () {
-          console.log("opening event");
-          if(initial){
-          document.querySelector("body > div.cky-modal.cky-modal-open > div > div.cky-preference-header > button").addEventListener("click",(event)=>{
-              modelOpen = false;
-              window.dispatchEvent(globalEventClose);
-              initial = false;
-          });
-        }
-        });
         const globalEventClose = new CustomEvent("cookieyes_modal_close", {
           detail: {
             message: "cookieyes modal closed",
@@ -69,22 +58,35 @@
         }
         window.addEventListener("load", function () {
           waitForElement(".cky-consent-container", function () {
-            document
-              .querySelector(
-                "body > div.cky-consent-container.cky-banner-bottom > div > div > div > div.cky-notice-btn-wrapper > button.cky-btn.cky-btn-customize"
-              )
-              .addEventListener("click", (event) => {
-                modelOpen = true;
-                window.dispatchEvent(globalEventOpen);
-              });
-            document.addEventListener(
-              "cookieyes_consent_update",
-              function (eventData) {
-                if (modelOpen) {
-                  window.dispatchEvent(globalEventClose);
+            const targetElement = document.querySelector(".cky-modal");
+            const mutationObserver = new MutationObserver((mutations) => {
+              mutations.forEach((mutation) => {
+                if (
+                  mutation.type === "attributes" &&
+                  mutation.attributeName === "class"
+                ) {
+                  if (
+                    Array.from(targetElement.classList).includes(
+                      "cky-modal-open"
+                    )
+                  ) {
+                    console.log("model opened");
+                    window.dispatchEvent("cookieyes_modal_open");
+                  } else {
+                    console.log("model closed");
+                    window.dispatchEvent("cookieyes_modal_close");
+                  }
                 }
-              }
-            );
+              });
+            });
+
+            const observerConfig = {
+              attributes: true,
+              attributeFilter: ["class"],
+              childList: false,
+              subtree: false,
+            };
+            mutationObserver.observe(targetElement, observerConfig);
           });
         });
       }
