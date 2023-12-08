@@ -36,6 +36,14 @@
     <script>
       function check() {
         var checktimeout = 0;
+        window.addEventListener("cookieyes_modal_open", function () {
+          // THEY CAN ADD THE CUSTOM LOGIC HERE
+          console.log("model open event");
+        });
+        window.addEventListener("cookieyes_modal_close", function () {
+          // THEY CAN ADD THE CUSTOM LOGIC HERE
+          console.log("model close event");
+        });
         const globalEventClose = new CustomEvent("cookieyes_modal_close", {
           detail: {
             message: "cookieyes modal closed",
