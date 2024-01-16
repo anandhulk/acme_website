@@ -46,6 +46,7 @@
       var checktimeout = 0;
       window.addEventListener("load", function () {
         waitForElement(".cky-consent-container", function () {
+          console.log("The thing loaded");
           const wrap = document.querySelector(".cky-btn-revisit-wrapper");
           const elementNew = document.createElement("div");
           elementNew.classList.add("cky-overlay");
