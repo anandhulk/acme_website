@@ -73,6 +73,9 @@
             document.body.insertBefore(elementNew, wrap);
           });
         });
+        document.addEventListener("cookieyes_consent_update", function (eventData) {
+          document.querySelector(".cky-overlay").remove();
+        })
     </script>
     <!-- End Google Tag Manager (noscript) -->
     <div class="banner">
