@@ -25,7 +25,7 @@
       src="https://mojoview.com/client_data/20d83dd7201fe66ca6550cde/script.js"
     ></script>
     <!-- End cookieyes banner -->
-    <style>
+    <!-- style>
       .cky-overlay {
         background: #000;
         opacity: 0.4;
@@ -36,7 +36,7 @@
         height: 100%;
         z-index: 9999999;
       }
-    </style>
+    </style -->
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -54,7 +54,17 @@
       ></iframe>
     </noscript>
     <script>
-      var checktimeout =0;
+      var checktimeout = 0;
+      const styleText = `
+        background: #000;
+        opacity: 0.4;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999999;
+      `;
       function waitForElement(selector, callback) {
         const element = document.querySelector(selector);
         if (element) return callback();
@@ -66,16 +76,20 @@
         }
       }
       window.addEventListener("DOMContentLoaded", function () {
-          waitForElement(".cky-consent-container", function () {
-            const wrap = document.querySelector(".cky-btn-revisit-wrapper");
-            const elementNew = document.createElement("div");
-            elementNew.classList.add("cky-overlay");
-            document.body.insertBefore(elementNew, wrap);
-          });
+        waitForElement(".cky-consent-container", function () {
+          const wrap = document.querySelector(".cky-btn-revisit-wrapper");
+          const elementNew = document.createElement("div");
+          elementNew.classList.add("cky-overlay");
+          elementNew.style.cssText = styleText;
+          document.body.insertBefore(elementNew, wrap);
         });
-        document.addEventListener("cookieyes_consent_update", function (eventData) {
+      });
+      document.addEventListener(
+        "cookieyes_consent_update",
+        function (eventData) {
           document.querySelector(".cky-overlay").remove();
-        })
+        }
+      );
     </script>
     <!-- End Google Tag Manager (noscript) -->
     <div class="banner">
