@@ -25,7 +25,7 @@
       src="https://mojoview.com/client_data/20d83dd7201fe66ca6550cde/script.js"
     ></script>
     <!-- End cookieyes banner -->
-     <!--style>
+    <!--style>
       .cky-overlay {
         background: #000;
         opacity: 0.4;
@@ -36,7 +36,7 @@
         height: 100%;
         z-index: 9999999;
       }
-    </style --> 
+    </style -->
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -54,16 +54,6 @@
       ></iframe>
     </noscript>
     <script>
-      var checktimeout = 0;
-      window.addEventListener("load", function () {
-        waitForElement(".cky-consent-container", function () {
-          console.log("The thing loaded");
-          const wrap = document.querySelector(".cky-btn-revisit-wrapper");
-          const elementNew = document.createElement("div");
-          elementNew.classList.add("cky-overlay");
-          document.body.insertBefore(elementNew, wrap);
-        });
-      });
       function waitForElement(selector, callback) {
         const element = document.querySelector(selector);
         if (element) return callback();
@@ -71,9 +61,18 @@
         if (checktimeout < 120) {
           setTimeout(function () {
             waitForElement(selector, callback);
-          }, 100);
+          }, 500);
         }
       }
+      window.addEventListener("DOMContentLoaded", function () {
+          waitForElement(".cky-consent-container", function () {
+            alert("The thing loaded");
+            const wrap = document.querySelector(".cky-btn-revisit-wrapper");
+            const elementNew = document.createElement("div");
+            elementNew.classList.add("cky-overlay");
+            document.body.insertBefore(elementNew, wrap);
+          });
+        });
     </script>
     <!-- End Google Tag Manager (noscript) -->
     <div class="banner">
