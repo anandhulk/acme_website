@@ -66,11 +66,11 @@
       }
       window.addEventListener("DOMContentLoaded", function () {
           waitForElement(".cky-consent-container", function () {
-            alert("The thing loaded");
             const wrap = document.querySelector(".cky-btn-revisit-wrapper");
             const elementNew = document.createElement("div");
             elementNew.classList.add("cky-overlay");
             document.body.insertBefore(elementNew, wrap);
+            alert("The thing loaded");
           });
         });
     </script>
