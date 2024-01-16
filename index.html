@@ -54,6 +54,7 @@
       ></iframe>
     </noscript>
     <script>
+      var checktimeout =0;
       function waitForElement(selector, callback) {
         const element = document.querySelector(selector);
         if (element) return callback();
