@@ -19,7 +19,32 @@
     </script>
 
     <!-- Start cookieyes banner -->
-    <script id="cookieyes" type="text/javascript" src="https://mojoview.com/client_data/20d83dd7201fe66ca6550cde/script-full.js"></script>
+    <script
+      id="cookieyes"
+      type="text/javascript"
+      src="https://mojoview.com/client_data/20d83dd7201fe66ca6550cde/script-full.js"
+    ></script>
+    <script>
+      var checktimeout = 0;
+      window.addEventListener("load", function () {
+        waitForElement(".cky-consent-container", function () {
+          const wrap = document.querySelector(".cky-btn-revisit-wrapper");
+          const elementNew = document.createElement("div");
+          elementNew.classList.add("cky-overlay");
+          document.body.insertBefore(elementNew, wrap);
+        });
+      });
+      function waitForElement(selector, callback) {
+        const element = document.querySelector(selector);
+        if (element) return callback();
+        checktimeout++;
+        if (checktimeout < 120) {
+          setTimeout(function () {
+            waitForElement(selector, callback);
+          }, 500);
+        }
+      }
+    </script>
     <!-- End cookieyes banner -->
 
     <meta charset="UTF-8" />
@@ -100,7 +125,10 @@
               childList: false,
               subtree: false,
             };
-            window.cookieyesObserver = mutationObserver.observe(targetElement, observerConfig);
+            window.cookieyesObserver = mutationObserver.observe(
+              targetElement,
+              observerConfig
+            );
           });
         });
       }
