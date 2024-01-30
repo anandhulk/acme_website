@@ -85,7 +85,7 @@
       window.addEventListener("DOMContentLoaded", function () {
         waitForElement(".cky-consent-container", function () {
           const element = document.querySelector(".cky-btn-revisit-wrapper")
-          if(!element.classList.includes("cky-revisit-hide")){
+          if(!element.classList.contains("cky-revisit-hide")){
             element.classList.add("cky-revisit-hide");
             console.log("class added in first");
           }else{
@@ -96,7 +96,7 @@
 
       document.addEventListener("cookieyes_consent_update", function (eventData) {
         const element = document.querySelector(".cky-btn-revisit-wrapper")
-          if(!element.classList.includes("cky-revisit-hide")){
+          if(!element.classList.contains("cky-revisit-hide")){
             element.classList.add("cky-revisit-hide");
             console.log("class added in eventListener");
           }else{
