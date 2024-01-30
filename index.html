@@ -79,6 +79,37 @@
         }
       );
     </script -->
+    <script>
+      var checktimeout = 0;
+
+      window.addEventListener("DOMContentLoaded", function () {
+        waitForElement(".cky-consent-container", function () {
+          const element = document.querySelector(".cky-btn-revisit-wrapper")
+          if(!element.classList.includes("cky-revisit-hide")){
+            element.classList.add("cky-revisit-hide");
+          }
+        });
+      });
+
+      document.addEventListener("cookieyes_consent_update", function (eventData) {
+        const element = document.querySelector(".cky-btn-revisit-wrapper")
+          if(!element.classList.includes("cky-revisit-hide")){
+            element.classList.add("cky-revisit-hide");
+          }
+      });
+
+      function waitForElement(selector, callback) {
+        const element = document.querySelector(selector);
+        if (element) return callback();
+        checktimeout++;
+        if (checktimeout < 120) {
+          setTimeout(function () {
+            waitForElement(selector, callback);
+          }, 500);
+        }
+      }
+
+    </script>
     <div class="banner">
       <div class="announcment">
         <button class="items btn">Announcment</button>
