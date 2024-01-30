@@ -87,6 +87,9 @@
           const element = document.querySelector(".cky-btn-revisit-wrapper")
           if(!element.classList.includes("cky-revisit-hide")){
             element.classList.add("cky-revisit-hide");
+            console.log("class added in first");
+          }else{
+            console.log("no class")
           }
         });
       });
@@ -95,6 +98,9 @@
         const element = document.querySelector(".cky-btn-revisit-wrapper")
           if(!element.classList.includes("cky-revisit-hide")){
             element.classList.add("cky-revisit-hide");
+            console.log("class added in eventListener");
+          }else{
+            console.log("no class")
           }
       });
 
