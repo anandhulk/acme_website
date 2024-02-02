@@ -20,7 +20,7 @@
 
     <!-- Start cookieyes banner -->
     <style>
-      .cky-btn-revisit-wrapper{
+      .cky-btn-revisit-wrapper {
         display: none !important;
       }
     </style>
@@ -46,18 +46,18 @@
         style="display: none; visibility: hidden"
       ></iframe>
     </noscript>
-    <!-- script>
+    <script>
       var checktimeout = 0;
       const styleText = `
-        background: #000;
-        opacity: 0.4;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 9999999;
-      `;
+      background: #000;
+      opacity: 0.4;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999999;
+    `;
       function waitForElement(selector, callback) {
         const element = document.querySelector(selector);
         if (element) return callback();
@@ -83,43 +83,6 @@
           document.querySelector(".cky-overlay").remove();
         }
       );
-    </script -->
-    <script>
-      // var checktimeout = 0;
-
-      // window.addEventListener("DOMContentLoaded", function () {
-      //   waitForElement(".cky-consent-container", function () {
-      //     const element = document.querySelector(".cky-btn-revisit-wrapper")
-      //     if(!element.classList.contains("cky-revisit-hide")){
-      //       element.classList.add("cky-revisit-hide");
-      //       console.log("class added in first");
-      //     }else{
-      //       console.log("no class")
-      //     }
-      //   });
-      // });
-
-      // document.addEventListener("cookieyes_consent_update", function (eventData) {
-      //   const element = document.querySelector(".cky-btn-revisit-wrapper")
-      //     if(!element.classList.contains("cky-revisit-hide")){
-      //       element.classList.add("cky-revisit-hide");
-      //       console.log("class added in eventListener");
-      //     }else{
-      //       console.log("no class")
-      //     }
-      // });
-
-      // function waitForElement(selector, callback) {
-      //   const element = document.querySelector(selector);
-      //   if (element) return callback();
-      //   checktimeout++;
-      //   if (checktimeout < 120) {
-      //     setTimeout(function () {
-      //       waitForElement(selector, callback);
-      //     }, 500);
-      //   }
-      // }
-
     </script>
     <div class="banner">
       <div class="announcment">
