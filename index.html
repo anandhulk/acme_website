@@ -74,7 +74,10 @@
           const elementNew = document.createElement("div");
           elementNew.classList.add("cky-overlay");
           elementNew.style.cssText = styleText;
-          document.body.insertBefore(elementNew, wrap);
+          const consent = window.getCkyConsent();
+          if(!consent.isUserActionCompleted){
+            document.body.insertBefore(elementNew, wrap);
+          }
         });
       });
       document.addEventListener(
