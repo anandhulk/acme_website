@@ -19,7 +19,11 @@
     </script>
 
     <!-- Start cookieyes banner -->
-    <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/dc76b1050ef5f2cd163f1220/script.js"></script>
+    <script
+      id="cookieyes"
+      type="text/javascript"
+      src="https://cdn-cookieyes.com/client_data/dc76b1050ef5f2cd163f1220/script.js"
+    ></script>
     <!-- End cookieyes banner -->
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
@@ -28,6 +32,78 @@
     <title>Home</title>
   </head>
   <body>
+    <script>
+      var checktimeout = 0;
+
+      window.addEventListener("DOMContentLoaded", function () {
+        waitForElement(".cky-consent-container", function () {
+          custumFunction();
+        });
+      });
+
+      function waitForElement(selector, callback) {
+        const element = document.querySelector(selector);
+        if (element) return callback();
+        checktimeout++;
+        if (checktimeout < 120) {
+          setTimeout(function () {
+            waitForElement(selector, callback);
+          }, 500);
+        }
+      }
+
+      function custumFunction() {
+        const consent = getCkyConsent();
+        if (!consent.categories.performance && !checkPlaceholder()) {
+          addPlaceholder();
+        }
+
+        function addPlaceholder() {
+          console.log("add placeholder fired")
+          const divElement = document.createElement("div");
+          divElement.setAttribute("class", "video-placeholder-youtube");
+          divElement.setAttribute("data-cky-tag", "video-placeholder");
+          divElement.setAttribute(
+            "style",
+            "height: 100%; width: 100%; background-image: url(https://cdn-cookieyes.com/assets/images/cky-placeholder.svg); background-size: 80px; background-position: center; background-repeat: no-repeat; background-color: #b2b0b059; display: flex; align-items: flex-end;"
+          );
+          const paragraph = document.createElement("p");
+          paragraph.setAttribute("class", "video-placeholder-text-youtube");
+          paragraph.setAttribute("data-cky-tag", "placeholder-title");
+          paragraph.setAttribute(
+            "style",
+            "display: block; border-color: rgb(0, 0, 0); background-color: rgb(0, 0, 0); color: rgb(255, 255, 255);"
+          );
+          paragraph.textContent =
+            "Please accept cookies to access this content";
+          divElement.appendChild(paragraph);
+          const embedResponsiveElement = document.querySelector(
+            ".calendly-inline-widget"
+          );
+          if (embedResponsiveElement) {
+            embedResponsiveElement.appendChild(divElement);
+          }
+        }
+
+        function removePlaceholder() {
+          console.log("remove placeholder fired")
+          const embedResponsiveElement = document.querySelector(
+            ".calendly-inline-widget"
+          );
+          if (embedResponsiveElement) {
+            const divElementToRemove = embedResponsiveElement.querySelector(
+              ".video-placeholder-youtube"
+            );
+            if (divElementToRemove) {
+              embedResponsiveElement.removeChild(divElementToRemove);
+            }
+          }
+        }
+        function checkPlaceholder() {
+          return document.querySelector(".video-placeholder-youtube");
+        }
+      }
+    </script>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
       <iframe
