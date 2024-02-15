@@ -61,6 +61,7 @@
         }
 
         function addPlaceholder() {
+          console.log("add")
           const divElement = document.createElement("div");
           divElement.setAttribute("class", "video-placeholder-youtube");
           divElement.setAttribute("data-cky-tag", "video-placeholder");
@@ -87,6 +88,7 @@
         }
 
         function removePlaceholder() {
+          console.log("remove")
           const embedResponsiveElement = document.querySelector(
             ".calendly-inline-widget"
           );
