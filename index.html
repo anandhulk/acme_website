@@ -56,10 +56,11 @@
         const consent = getCkyConsent();
         if (!consent.categories.performance && !checkPlaceholder()) {
           addPlaceholder();
+        } else if (consent.categories.performance) {
+          removePlaceholder();
         }
 
         function addPlaceholder() {
-          console.log("add placeholder fired")
           const divElement = document.createElement("div");
           divElement.setAttribute("class", "video-placeholder-youtube");
           divElement.setAttribute("data-cky-tag", "video-placeholder");
@@ -86,7 +87,6 @@
         }
 
         function removePlaceholder() {
-          console.log("remove placeholder fired")
           const embedResponsiveElement = document.querySelector(
             ".calendly-inline-widget"
           );
