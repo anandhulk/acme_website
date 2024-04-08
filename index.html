@@ -19,13 +19,26 @@
     </script>
 
     <!-- Start cookieyes banner -->
-    <script
-      id="cookieyes"
-      type="text/javascript"
-      src="https://cdn-cookieyes.com/client_data/dc76b1050ef5f2cd163f1220/script.js"
-    ></script>
+    <script>
+      function inIframe() {
+        return window.self !== window.top;
+      }
+      if (!inIframe) {
+        const cookieyesScript = document.createElement("script");
+        cookieyesScript.src =
+          "https://cdn-cookieyes.com/client_data/dc76b1050ef5f2cd163f1220/script.js";
+        cookieyesScript.id = "cookieyes";
+        cookieyesScript.type = "text/javascript";
+        document.head.appendChild(cookieyesScript);
+      }
+    </script>
     <!-- End cookieyes banner -->
-    <script data-cookieyes="cookieyes-analytics" type="text/javascript" src="https://www.youtube.com/iframe_api" async></script>
+    <script
+      data-cookieyes="cookieyes-analytics"
+      type="text/javascript"
+      src="https://www.youtube.com/iframe_api"
+      async
+    ></script>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -250,8 +263,13 @@
         <a href="#"><img src="assets/instagram.svg" /></a>
       </div>
     </footer>
-    <script data-cookieyes="cookieyes-functional" src="https://chatbot.cancerinfo.ai/embed.min.js" chatbotid="NbmARJcUHgKmyWej-PF2S" domain="chatbot.cancerinfo.ai" defer="">
-    </script>
+    <script
+      data-cookieyes="cookieyes-functional"
+      src="https://chatbot.cancerinfo.ai/embed.min.js"
+      chatbotid="NbmARJcUHgKmyWej-PF2S"
+      domain="chatbot.cancerinfo.ai"
+      defer=""
+    ></script>
     <script src="js/loadCart.js"></script>
     <script src="js/dynamic.js"></script>
   </body>
