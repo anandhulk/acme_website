@@ -23,7 +23,7 @@
       function inIframe() {
         return window.self !== window.top;
       }
-      if (!inIframe) {
+      if (!inIframe()) {
         console.log("not from iframe");
         const cookieyesScript = document.createElement("script");
         cookieyesScript.src =
