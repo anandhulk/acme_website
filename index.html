@@ -31,9 +31,14 @@
         cookieyesScript.id = "cookieyes";
         cookieyesScript.type = "text/javascript";
         document.head.appendChild(cookieyesScript);
+      }
+    </script>
+
+    <script>
+      window.addEventListener("load",()=>{
         const consent = window.getCkyConsent();
         console.log("consent is",consent);
-      }
+      })
     </script>
     <!-- End cookieyes banner -->
     <script
