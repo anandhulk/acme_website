@@ -31,6 +31,8 @@
         cookieyesScript.id = "cookieyes";
         cookieyesScript.type = "text/javascript";
         document.head.appendChild(cookieyesScript);
+        const consent = window.getCkyConsent();
+        console.log("consent is",consent);
       }
     </script>
     <!-- End cookieyes banner -->
