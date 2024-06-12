@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+      function resolvePromise() {
+        return new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            return resolve("The sum of all data is 100.");
+          }, 5000);
+        });
+      }
+      await resolvePromise();
+    </script>
     <!-- <script>
         window.iabConfig = {
             allowedVendors: [1,8,27,53 ],
@@ -17,9 +27,13 @@
       //     }
       // }
     </script>
-	<!-- Start cookieyes banner -->
-	<script id="cookieyes" type="text/javascript" src="https://mojoview.com/client_data/1e956d95af43d40268a55105/script.js"></script>
-	<!-- End cookieyes banner -->
+    <!-- Start cookieyes banner -->
+    <script
+      id="cookieyes"
+      type="text/javascript"
+      src="https://mojoview.com/client_data/1e956d95af43d40268a55105/script.js"
+    ></script>
+    <!-- End cookieyes banner -->
     <!-- End cookieyes banner -->
     <script
       data-cookieyes="cookieyes-analytics"
