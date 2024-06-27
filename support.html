@@ -1,119 +1,158 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Support</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="banner">
-        <div class="announcment">
-            <button class="items btn">Announcment</button>
-            <div class="items">How we are responding to COVID-19</div>
-        </div>
+      <div class="announcment">
+        <button class="items btn">Announcment</button>
+        <div class="items">How we are responding to COVID-19</div>
+      </div>
     </div>
 
-
     <header>
-        <img src="assets/acme-logo.svg" class="logo">
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="#">Donate</a></li>
-                <li><a href="support.html">Contact</a></li>
-                <li>
-                    <button class="cart" onclick="openCart()">
-                        <div class="cart-count"><p id="cartCount">1</p></div>
-                        <img src="assets/cart.svg">
-                    </button>
-                </li>
-            </ul>
-        </nav>
+      <img src="assets/acme-logo.svg" class="logo" />
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="#">Donate</a></li>
+          <li><a href="support.html">Contact</a></li>
+          <li>
+            <button class="cart" onclick="openCart()">
+              <div class="cart-count"><p id="cartCount">1</p></div>
+              <img src="assets/cart.svg" />
+            </button>
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <div class="contact-header">
-        <div class="left-header con-hd">
-            <h1>Contact Acme Outdoors</h1>
-            <div class="contact-white-box">
-
-                <div class="contact-box">
-                    <img src="assets-3/chat.svg" alt="">
-                    <h2>Contact Us</h2>
-                    <p>Just want to say hi? we'd love to<br>hear from you. We love our<br>customers and community!</p>
-                    <div></div>
-                    <button class="red-button">Send Us A Message</button>
-                </div>
-                <div class="contact-box">
-                    <img src="assets-3/chat-warning.svg" alt="">
-                    <h2>Get Support</h2>
-                    <p>Have an issue with an order or with<br>a product you purchased from<br>use? Fill out our support form</p>
-                    <div></div>
-                    <button class="red-button">Contact Support</button>
-                </div>
-
-            </div>
+      <div class="left-header con-hd">
+        <h1>Contact Acme Outdoors</h1>
+        <div class="contact-white-box">
+          <div class="contact-box">
+            <img src="assets-3/chat.svg" alt="" />
+            <h2>Contact Us</h2>
+            <p>
+              Just want to say hi? we'd love to<br />hear from you. We love
+              our<br />customers and community!
+            </p>
+            <div></div>
+            <button class="red-button">Send Us A Message</button>
+          </div>
+          <div class="contact-box">
+            <img src="assets-3/chat-warning.svg" alt="" />
+            <h2>Get Support</h2>
+            <p>
+              Have an issue with an order or with<br />a product you purchased
+              from<br />use? Fill out our support form
+            </p>
+            <div></div>
+            <button class="red-button">Contact Support</button>
+          </div>
         </div>
-        <div class="contact-image con-hd">
-            <div class="image-overlay contact-overlay"></div>
-            <img src="assets-3/support-phone.jpeg" alt="">
-        </div>
+      </div>
+      <div class="contact-image con-hd">
+        <div class="image-overlay contact-overlay"></div>
+        <img src="assets-3/support-phone.jpeg" alt="" />
+      </div>
     </div>
 
     <div class="contact-container">
-        <div class="contact-us">
-            <h2>Contact Us</h2>
-            <p>Acme Outdoors <br>123 Rainy Street <br> Oklahoma City, OK 73129</p>
-            <P class="break"><strong>General Inquires:</strong> (405) 555-5555</P>
-            <P><strong>Customer Support:</strong> (405) 555-5556</P>
-        </div>
-        <div class="contact-form">
-            <h2>Contact Form</h2>
-            <p>Send us a message and we'll get back to you as soon as we can!</p>
-            <form action="">
-                <p>Name</p>
-                <input type="text" placeholder="Enter your name" class="input-support">
-                <p>Email Address</p>
-                <input type="text" placeholder="Enter your email address" class="input-support">
-                <p>Your Message</p>
-                <input type="text" placeholder="Enter your message" class="input-message"><br>
-                <button class="red-button">Submit</button>
-            </form>
-        </div>
+      <div class="contact-us">
+        <h2>Contact Us</h2>
+        <p>
+          Acme Outdoors <br />123 Rainy Street <br />
+          Oklahoma City, OK 73129
+        </p>
+        <p class="break"><strong>General Inquires:</strong> (405) 555-5555</p>
+        <p><strong>Customer Support:</strong> (405) 555-5556</p>
+      </div>
+      <div class="contact-form">
+        <h2>Contact Form</h2>
+        <p>Send us a message and we'll get back to you as soon as we can!</p>
+        <form action="" id="submitForm">
+          <div class="form-element">
+            <p>Name</p>
+            <input
+              type="text"
+              placeholder="Enter your name"
+              class="input-support"
+              id="inputName"
+            />
+          </div>
+          <div class="form-element">
+            <p>Email Address</p>
+            <input
+              type="text"
+              placeholder="Enter your email address"
+              class="input-support"
+              id="inputMail"
+            />
+          </div>
+          <div class="form-element">
+            <p>Your Message</p>
+            <input
+              type="text"
+              placeholder="Enter your message"
+              class="input-message"
+              id="inputMessage"
+            /><br />
+          </div>
+          <button class="red-button" type="submit">Submit</button>
+        </form>
+      </div>
     </div>
     <div id="shoppingCart" class="hidden">
+      <div class="cart-header">
+        <p>Your Cart</p>
+        <button id="cartExit" onclick="exitCart()">x</button>
+      </div>
+      <hr />
 
-        <div class="cart-header">
-            <p> Your Cart</p>
-            <button id="cartExit" onclick="exitCart()">x</button>
-        </div>
-        <hr>
+      <div class="cart-products">
+        <ul id="cartList"></ul>
+      </div>
 
-        <div class="cart-products">
-            <ul id="cartList">
-            </ul>
-        </div>
-
-        <hr>
-        <div class="cart-checkout">
-            <p>Subtotal</p>
-            <p class="price" id="total"></p>
-        </div>
-        <button class="checkout-button">Continue to checkout</button>
-
+      <hr />
+      <div class="cart-checkout">
+        <p>Subtotal</p>
+        <p class="price" id="total"></p>
+      </div>
+      <button class="checkout-button">Continue to checkout</button>
     </div>
 
     <div id="overlay" class="overlay hidden"></div>
     <footer>
-        <img class="footer-logo" src="assets/acme-logo.svg">
-        <div>
-            <a href="#"><img src="assets/twitter.svg"></a>
-            <a href="#"><img src="assets/facebook.svg"></a>
-            <a href="#"><img src="assets/instagram.svg"></a>
-        </div>
+      <img class="footer-logo" src="assets/acme-logo.svg" />
+      <div>
+        <a href="#"><img src="assets/twitter.svg" /></a>
+        <a href="#"><img src="assets/facebook.svg" /></a>
+        <a href="#"><img src="assets/instagram.svg" /></a>
+      </div>
     </footer>
     <a href="about.html"></a>
+    <script>
+      const contactForm = document.getElementById("submitForm");
+      contactForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const name = document.querySelector("#input1").value;
+        const email = document.querySelector("#input2").value;
+        const message = document.querySelector("#input3").value;
+        document.querySelector("#input1").value;
+        document.querySelector("#input2").value;
+        document.querySelector("#input3").value;
+        alert(
+          `Thank you ${name} for your message. We will get back to you as soon as we can at ${email}`
+        );
+      });
+    </script>
     <script src="js/loadCart.js"></script>
-</body>
+  </body>
 </html>
