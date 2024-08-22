@@ -8,6 +8,12 @@
         console.log("normal browsing")
       }
     </script>
+    <script>
+     document.addEventListener("cookieyes_banner_load", function (eventData) {
+        const data = eventData.detail;
+        console.log(data);
+      });
+    </script>
     <!-- Start cookieyes banner -->
 <script id="cookieyes" type="text/javascript" src="https://mojoview.com/client_data/27e52a73d117f8c7b550ed4e/script.js"></script>
     <!-- End cookieyes banner -->
