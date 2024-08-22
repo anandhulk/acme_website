@@ -13,15 +13,33 @@
         console.log(eventData);
       });
     </script>
-    <!-- Start cookieyes banner -->
-<script id="cookieyes" type="text/javascript" src="https://mojoview.com/client_data/27e52a73d117f8c7b550ed4e/script.js"></script>
-    <!-- End cookieyes banner -->
-    <script
-      data-cookieyes="cookieyes-analytics"
-      type="text/javascript"
-      src="https://www.youtube.com/iframe_api"
-      async
-    ></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("consent", "default", {
+            ad_storage: "denied",
+            ad_user_data: "denied", 
+            ad_personalization: "denied",
+            analytics_storage: "denied",
+            functionality_storage: "denied",
+            personalization_storage: "denied",
+            security_storage: "granted",
+            wait_for_update: 2000,
+        });
+        gtag("set", "ads_data_redaction", true);
+        gtag("set", "url_passthrough", true);
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PJCJGM7F');</script>
+    <!-- End Google Tag Manager -->
+    <script id="cookieyes" type="text/javascript" src="https://mojoview.com/client_data/27e52a73d117f8c7b550ed4e/script.js"></script>
+
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
