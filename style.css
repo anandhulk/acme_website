@@ -955,5 +955,5 @@ hr {
 }
 
 .cky-btn-accept{
-  display: none;
+  display: none !important;
 }
