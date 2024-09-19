@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <script>
-          document.addEventListener("load", function (eventData) {
+          document.addEventListener("DOMContentLoaded", function (eventData) {
             const consent = eventData.detail.categories;
             console.log("banner load event fired");
             const loadCount = localStorage.getItem("loadCount");
