@@ -2,16 +2,16 @@
 <html lang="en">
   <head>
     <script>
-          localStorage.setItem("loadCount", "1");
           document.addEventListener("load", function (eventData) {
-             const consent = eventData.detail.categories;
+            const consent = eventData.detail.categories;
             console.log("banner load event fired");
             const loadCount = localStorage.getItem("loadCount");
-              if(loadCount != "1"){
-            console.log("cookie is set")
+              if(loadCount === "set"){
+                console.log("cookie is set")
                 document.cookie = "favorite_food_load=tripe;";
+              } else {
+                localStorage.setItem("loadCount", "set");
               }
-            localStorage.setItem("loadCount", "2");
           })
         window.dataLayer = window.dataLayer || [];
         function gtag() {
