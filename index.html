@@ -2,21 +2,16 @@
 <html lang="en">
   <head>
     <script>
+          localStorage.setItem("loadCount", "1");
           document.addEventListener("load", function (eventData) {
              const consent = eventData.detail.categories;
             console.log("banner load event fired");
-              if(consent.advertisement){
+            const loadCount = localStorage.getItem("loadCount");
+              if(loadCount != "1"){
             console.log("cookie is set")
                 document.cookie = "favorite_food_load=tripe;";
               }
-          })
-      document.addEventListener("DOMContentLoaded", function (eventData) {
-             const consent = eventData.detail.categories;
-            console.log("banner load event fired");
-              if(consent.advertisement){
-            console.log("cookie is set")
-                document.cookie = "favorite_food_domload=tripe;";
-              }
+            localStorage.setItem("loadCount", "2");
           })
         window.dataLayer = window.dataLayer || [];
         function gtag() {
