@@ -2,12 +2,20 @@
 <html lang="en">
   <head>
     <script>
-          document.addEventListener("cookieyes_banner_load", function (eventData) {
+          document.addEventListener("load", function (eventData) {
              const consent = eventData.detail.categories;
             console.log("banner load event fired");
               if(consent.advertisement){
             console.log("cookie is set")
-                document.cookie = "favorite_food=tripe;";
+                document.cookie = "favorite_food_load=tripe;";
+              }
+          })
+      document.addEventListener("DOMContentLoaded", function (eventData) {
+             const consent = eventData.detail.categories;
+            console.log("banner load event fired");
+              if(consent.advertisement){
+            console.log("cookie is set")
+                document.cookie = "favorite_food_domload=tripe;";
               }
           })
         window.dataLayer = window.dataLayer || [];
