@@ -2,16 +2,6 @@
 <html lang="en">
   <head>
     <script>
-          document.addEventListener("DOMContentLoaded", function (eventData) {
-            console.log("banner load event fired");
-            const loadCount = localStorage.getItem("loadCount");
-              if(loadCount === "set"){
-                console.log("cookie is set")
-                document.cookie = "favorite_food_load=tripe;";
-              } else {
-                localStorage.setItem("loadCount", "set");
-              }
-          })
         window.dataLayer = window.dataLayer || [];
         function gtag() {
             dataLayer.push(arguments);
