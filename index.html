@@ -2,23 +2,6 @@
 <html lang="en">
   <head>
     <script>
-      (function() {
-        let cookieStore = document.cookie;
-      
-        Object.defineProperty(document, 'cookie', {
-          get: function() {
-            console.log('document.cookie read');
-            return cookieStore;
-          },
-          set: function(value) {
-            console.log('document.cookie written:', value);
-            console.trace();
-            cookieStore = value;
-          }
-        });
-      })();
-    </script>
-    <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() {
             dataLayer.push(arguments);
